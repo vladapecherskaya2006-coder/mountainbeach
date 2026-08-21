@@ -1,0 +1,3105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mountain Beach — Freizeitpark Gaschurn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --emerald-950: #081711;
+    --emerald-900: #0c2118;
+    --emerald-800: #163526;
+    --olive-700: #33402a;
+    --olive-500: #4c5a3c;
+    --moss-400: #6d8262;
+    --sage-100: #e8ecdf;
+    --mist: #f2f4ea;
+    --brass: #c3a15a;
+    --brass-dim: #9c8148;
+    --glass-fill: rgba(242, 244, 234, 0.06);
+    --glass-fill-strong: rgba(242, 244, 234, 0.1);
+    --glass-border: rgba(242, 244, 234, 0.16);
+    --shadow-deep: 0 30px 60px -20px rgba(0,0,0,0.55);
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--emerald-950);
+    color: var(--mist);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3, .serif{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .eyebrow{
+    font-family: 'Manrope', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+  .wrap{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- SITE FRAME (signature: whole site sits inside one large rounded frame) ---------- */
+  .site-frame{
+    margin: 18px;
+    border-radius: 32px;
+    overflow: hidden;
+    background: var(--emerald-900);
+    box-shadow: var(--shadow-deep);
+  }
+  @media (max-width: 640px){
+    .site-frame{ margin: 10px; border-radius: 22px; }
+  }
+
+  /* ---------- GLASS ---------- */
+  .glass{
+    background: var(--glass-fill);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-radius: 20px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav-outer{
+    position: fixed;
+    top: 34px;
+    left: 0; right: 0;
+    z-index: 100;
+    display:flex;
+    justify-content:center;
+  }
+  .nav-pill{
+    display:flex;
+    align-items:center;
+    gap: 34px;
+    padding: 14px 30px;
+    background: rgba(8, 23, 17, 0.55);
+    border: 1px solid rgba(242,244,234,0.14);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .nav-pill .brand{
+    font-family:'Fraunces', serif;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    padding-right: 8px;
+    border-right: 1px solid rgba(242,244,234,0.2);
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .nav-links{ display:flex; gap: 26px; }
+  .nav-links a{
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--sage-100);
+    opacity: 0.85;
+    transition: opacity .2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover{ opacity: 1; color: var(--brass); }
+  .nav-cta{
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 100px;
+    background: var(--brass);
+    color: var(--emerald-950);
+    white-space: nowrap;
+  }
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+    .nav-pill{ gap: 16px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    height: calc(100vh - 36px);
+    min-height: 680px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero img, .hero video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    filter: saturate(1.05) brightness(0.78);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(8,23,17,0.35) 0%, rgba(8,23,17,0.15) 30%, rgba(8,23,17,0.55) 72%, var(--emerald-950) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    max-width: 780px;
+    padding: 0 24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 22px;
+  }
+  .hero-eyebrow{
+    display:flex; align-items:center; gap: 14px;
+    color: var(--sage-100);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .hero-eyebrow .line{ width: 34px; height:1px; background: var(--brass); }
+  .hero h1{
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 1.04;
+    color: var(--mist);
+    font-weight: 400;
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 400;
+    color: var(--brass);
+  }
+  .hero p{
+    font-size: 17px;
+    color: var(--sage-100);
+    opacity: 0.88;
+    max-width: 520px;
+    font-weight: 400;
+  }
+  .hero-actions{
+    display:flex; align-items:center; gap: 18px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+    justify-content:center;
+  }
+  .btn-primary{
+    padding: 15px 30px;
+    background: var(--brass);
+    color: var(--emerald-950);
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 14.5px;
+    letter-spacing: 0.02em;
+    transition: transform .25s, box-shadow .25s;
+    box-shadow: 0 12px 26px -8px rgba(195,161,90,0.5);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost{
+    padding: 14px 26px;
+    border-radius: 100px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--mist);
+    border: 1px solid rgba(242,244,234,0.35);
+    display: inline-block;
+  }
+  .status-chip{
+    position:absolute;
+    bottom: 40px; left:50%;
+    transform: translateX(-50%);
+    z-index:2;
+    display:flex; align-items:center; gap:10px;
+    padding: 10px 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .status-dot{ width:7px; height:7px; border-radius:50%; background:#8fd39c; box-shadow: 0 0 0 4px rgba(143,211,156,0.2); }
+
+  /* ---------- HERO SIGNATURE: corner contact + vertical rail + prev/next (reference-inspired) ---------- */
+  .hero-corner{
+    position:absolute; top:36px; left:40px; z-index:3;
+    display:flex; align-items:center; gap:14px;
+  }
+  .hero-corner .corner-label{
+    font-size:12.5px; font-weight:600; color: var(--sage-100); opacity:0.85;
+    letter-spacing:0.02em;
+  }
+  .corner-icon{
+    width: 30px; height:30px; border-radius:50%;
+    border: 1px solid rgba(242,244,234,0.32);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 12px; color: var(--sage-100);
+    background: rgba(8,23,17,0.25);
+  }
+  .hero-rail{
+    position:absolute; top:50%; right:40px;
+    transform: translateY(-50%);
+    z-index:3;
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .hero-rail .rail-line{ width:1px; height:60px; background: rgba(242,244,234,0.3); }
+  .hero-rail .rail-diamond{
+    width:9px; height:9px; background: var(--brass);
+    transform: rotate(45deg);
+  }
+  .hero-rail .rail-arrow{
+    font-size: 12px; color: var(--sage-100); opacity:0.7;
+  }
+  .hero-nav-arrows{
+    position:absolute; bottom: 108px; right:40px; z-index:3;
+    display:flex; gap:10px;
+  }
+  .hero-nav-arrows a{
+    width:44px; height:44px; border-radius:50%;
+    border: 1px solid rgba(242,244,234,0.3);
+    background: rgba(8,23,17,0.32);
+    backdrop-filter: blur(10px);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 15px; color: var(--mist);
+    transition: background .2s;
+  }
+  .hero-nav-arrows a:hover{ background: rgba(195,161,90,0.35); }
+  @media (max-width: 760px){
+    .hero-corner, .hero-rail, .hero-nav-arrows{ display:none; }
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{ position: relative; padding: 120px 0; }
+  .section-head{
+    max-width: 620px;
+    margin-bottom: 64px;
+  }
+  .section-head h2{
+    font-size: clamp(30px, 4vw, 46px);
+    color: var(--mist);
+    font-weight: 400;
+    margin-top: 14px;
+  }
+  .section-head p{
+    margin-top: 16px;
+    color: var(--sage-100);
+    opacity: 0.75;
+    font-size: 15.5px;
+    max-width: 520px;
+  }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* ---------- FEATURES ---------- */
+  .features{
+    background: var(--emerald-950);
+  }
+  .feature-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .feature-card{
+    padding: 32px 26px;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .feature-card .num{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--brass);
+  }
+  .feature-card h3{
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--mist);
+  }
+  .feature-card p{
+    font-size: 14px;
+    color: var(--sage-100);
+    opacity: 0.72;
+  }
+  @media (max-width: 980px){ .feature-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px){ .feature-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- ACTIVITIES (image glass cards) ---------- */
+  .activities{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% 0%, rgba(76,90,60,0.35), transparent 60%),
+      var(--emerald-900);
+  }
+  .activity-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .activity-card{
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    border: 1px solid var(--glass-border);
+  }
+  .activity-card img{
+    position:absolute; inset:0;
+    transition: transform 0.6s ease;
+  }
+  .activity-card:hover img{ transform: scale(1.06); }
+  .activity-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(8,23,17,0) 40%, rgba(8,23,17,0.75) 100%);
+    z-index:1;
+  }
+  .activity-label{
+    position:absolute; left:16px; right:16px; bottom:16px;
+    z-index:2;
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap: 10px;
+    padding: 16px 18px;
+  }
+  .activity-label h4{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--mist);
+  }
+  .activity-label span{
+    display:block;
+    font-size: 12px;
+    color: var(--sage-100);
+    opacity: 0.75;
+    margin-top: 4px;
+    font-family:'Manrope', sans-serif;
+  }
+  .arrow-circ{
+    width: 38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: rgba(242,244,234,0.14);
+    border: 1px solid rgba(242,244,234,0.25);
+    flex-shrink:0;
+  }
+  @media (max-width: 980px){ .activity-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px){ .activity-grid{ grid-template-columns: 1fr; } .activity-card{ aspect-ratio: 4/3; } }
+
+  /* ---------- SPLIT (family) ---------- */
+  .split{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items:center;
+    background: var(--emerald-950);
+  }
+  .split-media{
+    border-radius: 26px;
+    overflow:hidden;
+    aspect-ratio: 4/5;
+    border: 1px solid var(--glass-border);
+    position: relative;
+  }
+  .split-media .tag, .rest-media .tag{
+    position:absolute; top:20px; left:20px;
+    z-index: 2;
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .split-text{ display:flex; flex-direction:column; }
+  .split-text .eyebrow{ margin-bottom: 16px; display:block; }
+  .split-text h2{
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 400;
+    color: var(--mist);
+    margin-bottom: 18px;
+  }
+  .split-text p{
+    color: var(--sage-100);
+    opacity: 0.78;
+    font-size: 15.5px;
+    margin-bottom: 26px;
+  }
+  .check-list{ display:flex; flex-direction:column; gap: 14px; margin-bottom: 32px; }
+  .check-list li{
+    display:flex; align-items:center; gap: 12px;
+    font-size: 14.5px;
+    color: var(--mist);
+    list-style: none;
+  }
+  .check-list .dot{
+    width: 6px; height:6px; border-radius:50%;
+    background: var(--brass);
+    flex-shrink:0;
+  }
+  .split-text > a.btn-ghost{ width: fit-content; }
+  @media (max-width: 860px){
+    .split{ grid-template-columns: 1fr; gap: 34px; }
+  }
+
+  /* ---------- WEATHER BAND ---------- */
+  .weather-band{
+    position: relative;
+    height: 520px;
+    display:flex; align-items:center;
+    overflow:hidden;
+  }
+  .weather-band img{ position:absolute; inset:0; filter: brightness(0.55) saturate(1.05); }
+  .weather-band::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(90deg, rgba(8,23,17,0.88) 10%, rgba(8,23,17,0.35) 55%, rgba(8,23,17,0.15) 100%);
+  }
+  .weather-content{
+    position:relative; z-index:2;
+    max-width: 480px;
+  }
+  .weather-content .eyebrow{ display:block; margin-bottom: 16px; }
+  .weather-content h2{
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 400;
+    color: var(--mist);
+    margin-bottom: 16px;
+  }
+  .weather-content p{
+    color: var(--sage-100);
+    opacity: 0.8;
+    font-size: 15.5px;
+    margin-bottom: 24px;
+  }
+  .stat-highlight{ margin-top: 28px; }
+  .stat-highlight h3{ font-size: 32px; color: var(--brass); font-family:'Fraunces', serif; font-weight:500; }
+  .stat-highlight span{ font-size: 12.5px; color: var(--sage-100); opacity:0.7; }
+
+  /* ---------- RESTAURANT ---------- */
+  .restaurant{ background: var(--emerald-900); }
+  .rest-card{
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    overflow:hidden;
+    border-radius: 26px;
+  }
+  .rest-media{ position:relative; min-height: 420px; }
+  .rest-body{
+    padding: 52px 48px;
+    display:flex; flex-direction:column; justify-content:center;
+    background: var(--glass-fill-strong);
+  }
+  .rest-body h2{ font-size: 32px; font-weight:400; color: var(--mist); margin: 14px 0 16px; }
+  .rest-body p{ color: var(--sage-100); opacity:0.78; font-size:15px; margin-bottom: 30px; }
+  .rest-body > a{ width: fit-content; }
+  @media (max-width: 860px){
+    .rest-card{ grid-template-columns: 1fr; }
+    .rest-media{ min-height: 280px; }
+    .rest-body{ padding: 36px 28px; }
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing{ background: var(--emerald-950); }
+  .price-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: stretch;
+  }
+  .price-card{
+    padding: 40px 32px;
+    display:flex; flex-direction:column;
+    gap: 18px;
+  }
+  .price-card.featured{
+    background: linear-gradient(165deg, rgba(195,161,90,0.16), rgba(242,244,234,0.05));
+    border-color: rgba(195,161,90,0.4);
+  }
+  .price-card .plan-name{ font-size:14px; font-weight:700; letter-spacing:0.04em; color: var(--sage-100); }
+  .price-card .plan-price{ font-family:'Fraunces', serif; font-size: 38px; color: var(--mist); font-weight:500; }
+  .price-card .plan-price span{ font-size:14px; font-family:'Manrope',sans-serif; color: var(--sage-100); opacity:0.6; }
+  .price-card ul{ list-style:none; display:flex; flex-direction:column; gap:11px; margin: 6px 0 14px; }
+  .price-card ul li{ font-size: 13.5px; color: var(--sage-100); opacity:0.82; display:flex; gap:10px; align-items:flex-start; }
+  .price-card ul li::before{ content:"—"; color: var(--brass); flex-shrink:0; }
+  .price-card > a{ margin-top: auto; text-align:center; }
+  @media (max-width: 980px){ .price-grid{ grid-template-columns: 1fr; } }
+
+
+  /* ---------- ORIGINAL-SITE ADDITIONS: ANLAGEPLAN + PRICE MENU ---------- */
+  .anlageplan{ background: var(--emerald-900); }
+  .anlageplan-card{
+    position:relative; overflow:hidden; border-radius:26px;
+    border:1px solid var(--glass-border); background:var(--glass-fill);
+    box-shadow: var(--shadow-deep);
+  }
+  .anlageplan-media{ position:relative; aspect-ratio:16/9; min-height:430px; overflow:hidden; }
+  .anlageplan-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.9) brightness(.72); }
+  .anlageplan-media::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,23,17,.08),rgba(8,23,17,.56)); pointer-events:none; }
+  .plan-title-card{ position:absolute; left:28px; top:28px; z-index:3; padding:18px 20px; max-width:330px; }
+  .plan-title-card strong{ display:block; font-family:'Fraunces',serif; font-size:24px; font-weight:400; margin-bottom:6px; }
+  .plan-title-card span{ font-size:13px; color:var(--sage-100); opacity:.78; }
+  .plan-legend{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:20px; }
+  .plan-item{ padding:14px 16px; border-radius:16px; border:1px solid var(--glass-border); background:rgba(242,244,234,.045); font-size:13px; color:var(--sage-100); }
+  .plan-item b{ color:var(--brass); margin-right:8px; }
+  @media(max-width:860px){ .anlageplan-media{min-height:340px}.plan-legend{grid-template-columns:1fr 1fr} }
+  @media(max-width:560px){ .anlageplan-media{min-height:300px;aspect-ratio:4/5}.plan-title-card{left:16px;right:16px;top:16px}.plan-legend{grid-template-columns:1fr} }
+
+  .price-modal{
+    position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center;
+    padding:24px; background:rgba(4,12,9,.76); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  }
+  .price-modal.is-open{ display:flex; }
+  .price-modal-panel{
+    width:min(980px,100%); max-height:min(88vh,900px); overflow:auto; position:relative;
+    background:var(--emerald-900); border:1px solid var(--glass-border); border-radius:28px; box-shadow:0 40px 100px rgba(0,0,0,.5); padding:38px;
+  }
+  .price-modal-close{ position:absolute; top:18px; right:18px; width:42px; height:42px; border-radius:50%; border:1px solid var(--glass-border); background:rgba(242,244,234,.06); color:var(--mist); font-size:22px; cursor:pointer; }
+  .price-modal-head{ padding-right:56px; margin-bottom:26px; }
+  .price-modal-head h3{ font-size:34px; font-weight:400; margin:8px 0 8px; }
+  .price-modal-head p{ color:var(--sage-100); opacity:.75; font-size:14px; }
+  .official-price-table{ width:100%; border-collapse:collapse; overflow:hidden; border-radius:18px; }
+  .official-price-table th,.official-price-table td{ padding:15px 14px; border-bottom:1px solid rgba(242,244,234,.1); text-align:left; font-size:14px; }
+  .official-price-table th{ color:var(--brass); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .official-price-table td{ color:var(--sage-100); }
+  .official-price-table td:first-child{ color:var(--mist); font-weight:600; }
+  .price-notes{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .price-note{ padding:10px 14px; border:1px solid var(--glass-border); border-radius:100px; color:var(--sage-100); font-size:12.5px; background:rgba(242,244,234,.04); }
+  body.modal-open{ overflow:hidden; }
+  @media(max-width:700px){ .price-modal-panel{padding:28px 18px 22px}.official-price-table{display:block;overflow-x:auto;white-space:nowrap}.price-modal-head h3{font-size:28px} }
+
+
+  .family-pass-note{ padding:16px 18px; margin:0 0 26px; display:flex; flex-direction:column; gap:5px; }
+  .family-pass-note strong{ font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--mist); }
+  .family-pass-note span{ font-size:13px; color:var(--sage-100); opacity:.78; line-height:1.55; }
+  .birthday-card{ justify-content:flex-start; }
+  .birthday-icon{ font-family:'Fraunces',serif; font-size:42px; line-height:1; color:var(--brass); margin:4px 0 0; }
+  .birthday-title{ font-family:'Fraunces',serif; font-size:25px; line-height:1.15; font-weight:400; color:var(--mist); }
+  .birthday-copy{ font-size:14px; color:var(--sage-100); opacity:.78; line-height:1.65; margin-bottom:10px; }
+  .menu-modal-panel{ width:min(760px,100%); }
+  .menu-source-card{ padding:24px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .menu-source-card strong{ display:block; font-family:'Fraunces',serif; font-size:22px; font-weight:400; margin-bottom:8px; }
+  .menu-source-card p{ max-width:460px; color:var(--sage-100); opacity:.75; font-size:13.5px; line-height:1.6; }
+  .menu-source-card .btn-primary{ flex-shrink:0; text-align:center; }
+  .menu-facts{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  @media(max-width:700px){ .menu-source-card{flex-direction:column;align-items:flex-start}.menu-source-card .btn-primary{width:100%} }
+
+  /* ---------- PRICING REFINEMENT ---------- */
+  .pricing .price-grid{
+    max-width: 900px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .pricing .price-card{
+    min-height: 220px;
+    padding: 28px 24px;
+    gap: 14px;
+    justify-content: space-between;
+  }
+  .pricing .price-card .plan-name{ font-size:12px; letter-spacing:.12em; }
+  .pricing .price-card .price-card-title{
+    font-family:'Fraunces',serif;
+    font-size:27px;
+    line-height:1.1;
+    font-weight:400;
+    color:var(--mist);
+    margin-top:4px;
+  }
+  .pricing .price-card .price-card-copy{
+    color:var(--sage-100);
+    opacity:.66;
+    font-size:13px;
+    line-height:1.55;
+    max-width:230px;
+  }
+  .pricing .price-card-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; }
+  .pricing .price-card-actions a{ flex:1 1 auto; text-align:center; padding-left:16px; padding-right:16px; }
+  .birthday-card{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(150deg,rgba(195,161,90,.12),rgba(242,244,234,.035));
+  }
+  .birthday-card::after{
+    content:'✦';
+    position:absolute; right:-8px; top:-24px;
+    font-family:'Fraunces',serif; font-size:120px; line-height:1;
+    color:rgba(195,161,90,.075); transform:rotate(14deg); pointer-events:none;
+  }
+  .birthday-card .birthday-icon{ font-size:30px; margin:0; }
+  .birthday-card .birthday-title{ font-size:27px; }
+  .birthday-card .birthday-teaser{
+    color:var(--sage-100); opacity:.68; font-size:13px; line-height:1.5; max-width:210px;
+  }
+  @media(max-width:980px){
+    .pricing .price-grid{ max-width:560px; grid-template-columns:1fr; }
+    .pricing .price-card{ min-height:190px; }
+  }
+
+  /* Menu modal: no external page iframe / white frame */
+  .menu-modal-panel{ width:min(900px,100%); }
+  .menu-embedded{
+    border:1px solid var(--glass-border);
+    border-radius:22px;
+    overflow:hidden;
+    background:rgba(242,244,234,.035);
+  }
+  .menu-embedded-head{
+    padding:20px 22px;
+    border-bottom:1px solid rgba(242,244,234,.1);
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+  }
+  .menu-embedded-head strong{ font-family:'Fraunces',serif; font-size:20px; font-weight:400; }
+  .menu-embedded-body{ padding:22px; }
+  .menu-embedded-body p{ color:var(--sage-100); opacity:.78; font-size:14px; line-height:1.7; }
+  .menu-source-status{ margin-top:14px; padding:13px 15px; border-radius:14px; background:rgba(195,161,90,.09); border:1px solid rgba(195,161,90,.2); color:var(--sage-100); font-size:12.5px; line-height:1.55; }
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--emerald-900);
+    padding: 80px 0 34px;
+    border-top: 1px solid rgba(242,244,234,0.08);
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+  .footer-brand .serif{ font-size: 22px; color: var(--mist); margin-bottom: 14px; display:block; }
+  .footer-brand p{ font-size:14px; color: var(--sage-100); opacity:0.65; max-width: 280px; }
+  .footer-col h5{ font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color: var(--brass); margin-bottom: 18px; }
+  .footer-col a, .footer-col span{ display:block; font-size:14px; color: var(--sage-100); opacity:0.72; margin-bottom:11px; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top: 26px;
+    border-top: 1px solid rgba(242,244,234,0.08);
+    font-size: 12.5px;
+    color: var(--sage-100); opacity:0.55;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  @media (max-width: 860px){
+    .footer-top{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px){
+    .footer-top{ grid-template-columns: 1fr; }
+    section{ padding: 80px 0; }
+    .wrap{ padding: 0 20px; }
+  }
+
+
+
+  /* ---------- HERO SCROLL ANIMATION (added from template mechanics only) ---------- */
+  .hero-scroll-container{
+    position: relative;
+    height: calc(var(--hero-vh, 100vh) * 2);
+    background: var(--emerald-950);
+  }
+
+  .hero-scroll-container > .hero{
+    position: sticky;
+    top: 0;
+    height: var(--hero-vh, 100vh);
+    min-height: 0;
+    width: 100%;
+    z-index: 1;
+    will-change: transform;
+  }
+
+  .hero-scroll-container > .features{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    min-height: var(--hero-vh, 100vh);
+    display: flex;
+    align-items: center;
+    will-change: transform;
+    box-shadow: 0 -32px 80px rgba(0,0,0,0.32);
+    border-radius: 32px 32px 0 0;
+    overflow: hidden;
+  }
+
+  .hero-scroll-container > .features > .wrap{
+    width: 100%;
+  }
+
+  .hero-scroll-container .hero > img{
+    will-change: transform, filter;
+    transform-origin: center center;
+  }
+
+  .hero-scroll-container .hero-content,
+  .hero-scroll-container .hero-corner,
+  .hero-scroll-container .hero-rail,
+  .hero-scroll-container .hero-nav-arrows,
+  .hero-scroll-container .status-chip{
+    will-change: transform, opacity;
+  }
+
+  @media (max-width: 760px){
+    .hero-scroll-container{ height: calc(var(--hero-vh, 100vh) * 2); }
+    .hero-scroll-container > .features{
+      border-radius: 24px 24px 0 0;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      align-items: flex-start;
+    }
+  }
+
+
+  /* Embedded Beacheria menu reconstructed from the supplied original menu.
+     White paper, original menu content, no decorative food/drink background images. */
+  .menu-modal-panel{ width:min(1120px,100%); }
+  .beacheria-menu-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:4px;
+  }
+  .beacheria-menu-page{
+    background:#fff;
+    color:#151515;
+    border-radius:18px;
+    padding:28px 30px 24px;
+    box-shadow:0 18px 40px rgba(0,0,0,.18);
+    min-height:620px;
+  }
+  .beacheria-menu-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:24px;
+  }
+  .beacheria-menu-title{
+    font-family:'Fraunces',serif;
+    font-size:32px;
+    line-height:1.05;
+    font-weight:400;
+    color:#111;
+  }
+  .beacheria-menu-title span{
+    display:block;
+    font-size:24px;
+    margin-top:8px;
+  }
+  .beacheria-logo{
+    width:72px;
+    height:auto;
+    object-fit:contain;
+    flex-shrink:0;
+  }
+  .beacheria-section-title{
+    text-align:center;
+    text-decoration:underline;
+    text-underline-offset:4px;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.02em;
+    margin:6px 0 14px;
+    color:#111;
+  }
+  .beacheria-menu-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .beacheria-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:baseline;
+    gap:16px;
+    font-size:14px;
+    line-height:1.32;
+  }
+  .beacheria-name{
+    font-weight:700;
+    color:#111;
+  }
+  .beacheria-allergen{
+    font-size:9px;
+    font-weight:500;
+    color:#333;
+    margin-left:7px;
+    white-space:nowrap;
+  }
+  .beacheria-note-inline{
+    font-size:9px;
+    font-weight:600;
+    color:#333;
+    margin-left:7px;
+  }
+  .beacheria-price{
+    font-weight:800;
+    color:#111;
+    white-space:nowrap;
+  }
+  .beacheria-dessert{ margin-top:18px; }
+  .beacheria-legal{
+    margin-top:20px;
+    padding-top:15px;
+    border-top:1px solid #ddd;
+    font-family:Georgia,serif;
+    font-size:10px;
+    line-height:1.55;
+    color:#333;
+  }
+  @media(max-width:860px){
+    .beacheria-menu-wrap{ grid-template-columns:1fr; }
+    .beacheria-menu-page{ min-height:auto; padding:24px 20px; }
+    .beacheria-menu-title{ font-size:28px; }
+  }
+  @media(max-width:520px){
+    .beacheria-row{ font-size:12.5px; gap:10px; }
+    .beacheria-allergen,.beacheria-note-inline{ display:block; margin-left:0; margin-top:2px; white-space:normal; }
+    .beacheria-logo{ width:58px; }
+  }
+
+
+  /* ---------- FAMILIENPASS MODAL ---------- */
+  .family-pass-modal-panel{
+    width:min(860px, calc(100% - 32px));
+  }
+  .family-pass-modal-content{
+    display:grid;
+    grid-template-columns:minmax(260px,.85fr) 1.15fr;
+    gap:34px;
+    align-items:center;
+    margin-top:12px;
+  }
+  .family-pass-visual{
+    background:#fff;
+    border-radius:22px;
+    padding:18px;
+    box-shadow:0 18px 42px rgba(0,0,0,.22);
+  }
+  .family-pass-visual img{
+    position:static;
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    filter:none;
+    border-radius:16px;
+  }
+  .family-pass-copy{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .family-pass-copy h4{
+    font-family:'Fraunces',serif;
+    font-size:30px;
+    font-weight:400;
+    line-height:1.15;
+    color:var(--mist);
+  }
+  .family-pass-copy p{
+    color:var(--sage-100);
+    opacity:.82;
+    font-size:15px;
+  }
+  .family-pass-rule{
+    padding:18px 20px;
+    border-radius:18px;
+    background:rgba(195,161,90,.10);
+    border:1px solid rgba(195,161,90,.28);
+  }
+  .family-pass-rule strong{
+    display:block;
+    color:var(--brass);
+    margin-bottom:6px;
+    font-size:13px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .family-pass-rule span{
+    display:block;
+    color:var(--mist);
+    font-size:15px;
+    line-height:1.55;
+  }
+  @media(max-width:760px){
+    .family-pass-modal-content{ grid-template-columns:1fr; gap:22px; }
+    .family-pass-copy h4{ font-size:26px; }
+  }
+
+
+  
+  /* ============================================================
+     STRONGER AMBIENT BACKGROUND SYSTEM
+     Uses the SAME hero photo as a blurred site-wide background.
+     ============================================================ */
+
+  html {
+    background:#081711;
+  }
+
+  body {
+    position:relative;
+    background:transparent !important;
+  }
+
+  body::before {
+    content:"";
+    position:fixed;
+    inset:-120px;
+    z-index:-10;
+    background:
+      linear-gradient(rgba(5,17,12,.42), rgba(5,17,12,.62)),
+      url('images/image-01-4ab62fc3ac.png');
+    background-size:cover;
+    background-position:center 35%;
+    background-attachment:fixed;
+    filter:blur(26px) saturate(.95) brightness(.72);
+    transform:scale(1.14);
+    pointer-events:none;
+  }
+
+  body::after {
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-9;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(130,160,120,.20), transparent 30%),
+      radial-gradient(circle at 80% 30%, rgba(110,150,130,.12), transparent 34%),
+      radial-gradient(circle at 60% 80%, rgba(195,161,90,.08), transparent 28%),
+      linear-gradient(180deg, rgba(6,20,14,.10), rgba(6,20,14,.24));
+    pointer-events:none;
+  }
+
+  .site-frame {
+    background:rgba(8,23,17,.18) !important;
+    box-shadow:0 30px 90px rgba(0,0,0,.28);
+  }
+
+  /* Sections become translucent glass layers instead of flat green blocks */
+  .features,
+  .activities,
+  .split,
+  .restaurant,
+  .pricing {
+    background:rgba(8,23,17,.44) !important;
+    backdrop-filter:blur(18px) saturate(125%);
+    -webkit-backdrop-filter:blur(18px) saturate(125%);
+    border-top:1px solid rgba(242,244,234,.055);
+    border-bottom:1px solid rgba(242,244,234,.045);
+  }
+
+  .activities,
+  .restaurant {
+    background:
+      linear-gradient(135deg, rgba(14,38,28,.52), rgba(8,23,17,.40)) !important;
+  }
+
+  /* Gentle tonal variation so the page feels layered rather than repetitive */
+  .features {
+    background:
+      linear-gradient(180deg, rgba(8,23,17,.52), rgba(8,23,17,.34)) !important;
+  }
+
+  .split {
+    background:
+      linear-gradient(120deg, rgba(9,25,18,.40), rgba(20,46,34,.42)) !important;
+  }
+
+  .pricing {
+    background:
+      linear-gradient(180deg, rgba(8,23,17,.38), rgba(8,23,17,.58)) !important;
+  }
+
+  footer {
+    background:rgba(7,20,15,.64) !important;
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+  }
+
+  /* Make the content blocks visibly glassy */
+  .glass,
+  .feature-card,
+  .price-card,
+  .rest-card {
+    background:rgba(242,244,234,.065) !important;
+    border:1px solid rgba(242,244,234,.15) !important;
+    backdrop-filter:blur(20px) saturate(135%) !important;
+    -webkit-backdrop-filter:blur(20px) saturate(135%) !important;
+    box-shadow:
+      0 18px 50px rgba(0,0,0,.18),
+      inset 0 1px 0 rgba(255,255,255,.035);
+  }
+
+  /* Add subtle atmospheric separators between major content areas */
+  .features::after,
+  .activities::after,
+  .split::after,
+  .restaurant::after,
+  .pricing::after {
+    content:"";
+    position:absolute;
+    left:7%;
+    right:7%;
+    bottom:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(242,244,234,.10), transparent);
+    pointer-events:none;
+  }
+
+  /* Keep images vivid so they still remain the main focal points */
+  .activity-card img,
+  .split-media img,
+  .rest-media img {
+    filter:saturate(1.04) contrast(1.02);
+  }
+
+  /* Hero stays untouched */
+  .hero {
+    background:transparent !important;
+    backdrop-filter:none !important;
+  }
+
+  @media (max-width:760px) {
+    body::before {
+      inset:-90px;
+      filter:blur(22px) saturate(.9) brightness(.66);
+      transform:scale(1.18);
+      background-position:center 28%;
+    }
+    .features,
+    .activities,
+    .split,
+    .restaurant,
+    .pricing {
+      backdrop-filter:blur(14px) saturate(120%);
+      -webkit-backdrop-filter:blur(14px) saturate(120%);
+    }
+  }
+
+
+  /* ============================================================
+     UNIFIED GLASS SYSTEM — remove mismatched green card blocks
+     ============================================================ */
+
+  /* One consistent tone for all informational cards */
+  .glass,
+  .feature-card,
+  .price-card,
+  .rest-card,
+  .activity-label,
+  .family-pass-rule,
+  .beacheria-menu-page,
+  .price-modal-panel {
+    background: rgba(242,244,234,.055) !important;
+    border: 1px solid rgba(242,244,234,.12) !important;
+    backdrop-filter: blur(22px) saturate(125%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(125%) !important;
+    box-shadow:
+      0 18px 48px rgba(0,0,0,.14),
+      inset 0 1px 0 rgba(255,255,255,.025) !important;
+  }
+
+  /* Remove stronger emerald/green fills from specific blocks */
+  .rest-body,
+  .price-card.featured,
+  .s2-card,
+  .card {
+    background: rgba(242,244,234,.045) !important;
+    border-color: rgba(242,244,234,.10) !important;
+  }
+
+  /* Cards should almost melt into the page */
+  .feature-card,
+  .price-card,
+  .rest-card {
+    box-shadow:
+      0 12px 36px rgba(0,0,0,.10),
+      inset 0 1px 0 rgba(255,255,255,.02) !important;
+  }
+
+  /* Activity cards keep the image, but the information plate is more transparent */
+  .activity-label {
+    background: linear-gradient(
+      135deg,
+      rgba(8,23,17,.26),
+      rgba(242,244,234,.045)
+    ) !important;
+    border-color: rgba(242,244,234,.12) !important;
+  }
+
+  /* Restaurant panel no longer looks like a separate dark-green slab */
+  .rest-card {
+    background: rgba(242,244,234,.035) !important;
+  }
+  .rest-body {
+    background: transparent !important;
+  }
+
+  /* Pricing cards unified and quieter */
+  .price-card,
+  .price-card.featured {
+    background: rgba(242,244,234,.04) !important;
+    border-color: rgba(242,244,234,.11) !important;
+  }
+
+  /* Slightly reduce visual edge contrast */
+  .activity-card,
+  .split-media,
+  .rest-card {
+    border-color: rgba(242,244,234,.10) !important;
+  }
+
+  /* Family popup content keeps a single neutral glass language */
+  .family-pass-rule {
+    background: rgba(242,244,234,.045) !important;
+  }
+
+  @media (max-width:760px) {
+    .glass,
+    .feature-card,
+    .price-card,
+    .rest-card,
+    .activity-label {
+      backdrop-filter: blur(18px) saturate(120%) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(120%) !important;
+    }
+  }
+
+
+  /* ---------- ATTRACTION INFO MODAL ---------- */
+  .attraction-info-trigger{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    color:var(--mist);
+    font-family:inherit;
+    padding:0;
+  }
+  .attraction-info-trigger:hover{
+    background:rgba(242,244,234,.20) !important;
+    transform:translateX(2px);
+  }
+  .attraction-modal-panel{
+    width:min(560px, calc(100% - 32px));
+  }
+  .attraction-modal-copy{
+    margin-top:18px;
+    padding:22px 24px;
+    border-radius:20px;
+    background:rgba(242,244,234,.045);
+    border:1px solid rgba(242,244,234,.10);
+  }
+  .attraction-modal-copy p{
+    font-size:16px;
+    line-height:1.65;
+    color:var(--mist);
+  }
+  .attraction-modal-note{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-top:16px;
+    color:var(--sage-100);
+    opacity:.78;
+    font-size:13px;
+    line-height:1.5;
+  }
+  .attraction-modal-note::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--brass);
+    margin-top:7px;
+    flex-shrink:0;
+  }
+
+
+  /* ---------- GOOGLE REVIEWS ---------- */
+  .reviews{
+    background:
+      linear-gradient(180deg, rgba(8,23,17,.40), rgba(8,23,17,.52)) !important;
+    backdrop-filter:blur(18px) saturate(125%);
+    -webkit-backdrop-filter:blur(18px) saturate(125%);
+    border-top:1px solid rgba(242,244,234,.055);
+    border-bottom:1px solid rgba(242,244,234,.045);
+  }
+  .reviews-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:32px;
+    margin-bottom:48px;
+  }
+  .reviews-head .section-head{ margin-bottom:0; }
+  .reviews-score{
+    min-width:180px;
+    padding:18px 20px;
+    border-radius:18px;
+    background:rgba(242,244,234,.045);
+    border:1px solid rgba(242,244,234,.11);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    text-align:center;
+  }
+  .reviews-score strong{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size:34px;
+    font-weight:400;
+    line-height:1;
+    color:var(--mist);
+  }
+  .reviews-score .stars{
+    color:var(--brass);
+    letter-spacing:.12em;
+    font-size:14px;
+    margin:8px 0 5px;
+  }
+  .reviews-score span{
+    display:block;
+    font-size:11.5px;
+    color:var(--sage-100);
+    opacity:.68;
+  }
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .review-card{
+    min-height:250px;
+    padding:26px 24px;
+    border-radius:22px;
+    background:rgba(242,244,234,.04);
+    border:1px solid rgba(242,244,234,.105);
+    backdrop-filter:blur(22px) saturate(125%);
+    -webkit-backdrop-filter:blur(22px) saturate(125%);
+    box-shadow:0 16px 42px rgba(0,0,0,.10);
+    display:flex;
+    flex-direction:column;
+  }
+  .review-stars{
+    color:var(--brass);
+    letter-spacing:.10em;
+    font-size:13px;
+    margin-bottom:18px;
+  }
+  .review-card blockquote{
+    margin:0;
+    color:var(--mist);
+    font-family:'Fraunces',serif;
+    font-size:19px;
+    line-height:1.45;
+    font-weight:400;
+  }
+  .review-meta{
+    margin-top:auto;
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:flex-end;
+  }
+  .review-name{
+    font-size:13px;
+    font-weight:700;
+    color:var(--sage-100);
+  }
+  .review-source{
+    font-size:10.5px;
+    color:var(--sage-100);
+    opacity:.52;
+    text-transform:uppercase;
+    letter-spacing:.10em;
+  }
+  .reviews-note{
+    margin-top:18px;
+    font-size:11.5px;
+    color:var(--sage-100);
+    opacity:.52;
+  }
+  @media(max-width:980px){
+    .reviews-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media(max-width:680px){
+    .reviews-head{ flex-direction:column; align-items:flex-start; }
+    .reviews-grid{ grid-template-columns:1fr; }
+    .reviews-score{ min-width:0; width:100%; text-align:left; }
+  }
+
+
+  /* ---------- FOOTER GOOGLE MAPS LINK ---------- */
+  .footer-col .footer-map-link{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    width:fit-content;
+    margin-top:5px;
+    padding:9px 13px;
+    border-radius:100px;
+    border:1px solid rgba(242,244,234,.12);
+    background:rgba(242,244,234,.045);
+    color:var(--mist);
+    opacity:.88;
+    font-size:12px;
+    font-weight:600;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease;
+  }
+  .footer-col .footer-map-link:hover{
+    background:rgba(242,244,234,.09);
+    border-color:rgba(195,161,90,.30);
+    color:var(--brass);
+    opacity:1;
+    transform:translateY(-1px);
+  }
+
+
+  /* Restore Speisekarte / Getränkekarte white paper appearance */
+  .menu-modal .beacheria-menu-page{
+    background:#ffffff !important;
+    color:#151515 !important;
+    border:0 !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    box-shadow:0 18px 40px rgba(0,0,0,.18) !important;
+  }
+  .menu-modal .beacheria-menu-title,
+  .menu-modal .beacheria-section-title,
+  .menu-modal .beacheria-name,
+  .menu-modal .beacheria-price{
+    color:#111111 !important;
+  }
+  .menu-modal .beacheria-allergen,
+  .menu-modal .beacheria-note-inline,
+  .menu-modal .beacheria-legal{
+    color:#333333 !important;
+  }
+  .menu-modal .beacheria-legal{
+    border-top-color:#dddddd !important;
+  }
+  .menu-modal .beacheria-logo{
+    filter:none !important;
+    opacity:1 !important;
+  }
+
+
+  /* ---------- ACTIVE CONTACT LINKS ---------- */
+  .footer-col .footer-contact-link{
+    display:block;
+    width:fit-content;
+    font-size:14px;
+    color:var(--sage-100);
+    opacity:.72;
+    margin-bottom:11px;
+    transition:color .2s ease, opacity .2s ease, transform .2s ease;
+  }
+  .footer-col .footer-contact-link:hover{
+    color:var(--brass);
+    opacity:1;
+    transform:translateX(2px);
+  }
+  .footer-col .footer-instagram-link{
+    margin-top:4px;
+  }
+
+
+  /* ============================================================
+     MOBILE STABILITY / PERFORMANCE FIX
+     Prevents the second sticky frame from covering Attraktionen
+     and reduces expensive mobile blur effects.
+     ============================================================ */
+  @media (max-width: 760px) {
+    html, body {
+      overflow-x: hidden;
+    }
+
+    /* On mobile the Hero transition becomes a clean normal flow.
+       This prevents the sticky second frame from remaining above
+       the attraction cards further down the page. */
+    .hero-scroll-container {
+      height: auto !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      background: transparent !important;
+    }
+
+    .hero-scroll-container > .hero {
+      position: relative !important;
+      top: auto !important;
+      height: 100svh !important;
+      min-height: 620px !important;
+      z-index: 1 !important;
+    }
+
+    .hero-scroll-container > .features {
+      position: relative !important;
+      top: auto !important;
+      min-height: 0 !important;
+      transform: none !important;
+      z-index: 2 !important;
+      border-radius: 24px 24px 0 0;
+      padding-top: 72px !important;
+      padding-bottom: 72px !important;
+      box-shadow: 0 -18px 45px rgba(0,0,0,.20) !important;
+      overflow: visible !important;
+    }
+
+    /* Keep Hero content stable on touch devices */
+    .hero-scroll-container .hero-content {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    .hero-scroll-container .hero > img {
+      transform: none !important;
+      filter: saturate(1.05) brightness(.76) !important;
+    }
+
+    /* Attraction section must always sit above any preceding frame */
+    .activities {
+      position: relative !important;
+      z-index: 3 !important;
+      overflow: visible !important;
+    }
+
+    .activity-grid {
+      grid-template-columns: 1fr !important;
+      gap: 18px !important;
+    }
+
+    .activity-card {
+      aspect-ratio: 3 / 4 !important;
+      min-height: 0 !important;
+      isolation: isolate;
+    }
+
+    .activity-label {
+      left: 12px !important;
+      right: 12px !important;
+      bottom: 12px !important;
+      padding: 14px 15px !important;
+    }
+
+    /* Reduce heavy effects that cause Safari/iPhone stutter */
+    body::before {
+      filter: blur(14px) saturate(.86) brightness(.62) !important;
+      transform: scale(1.08) !important;
+    }
+
+    .features,
+    .activities,
+    .split,
+    .restaurant,
+    .pricing,
+    .reviews {
+      backdrop-filter: blur(8px) saturate(112%) !important;
+      -webkit-backdrop-filter: blur(8px) saturate(112%) !important;
+    }
+
+    .glass,
+    .feature-card,
+    .price-card,
+    .rest-card,
+    .activity-label,
+    .review-card {
+      backdrop-filter: blur(10px) saturate(112%) !important;
+      -webkit-backdrop-filter: blur(10px) saturate(112%) !important;
+    }
+
+    /* More comfortable mobile spacing */
+    section {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .section-head {
+      margin-bottom: 38px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 11vw, 58px) !important;
+    }
+
+    .hero p {
+      font-size: 15px !important;
+    }
+
+    .hero-actions {
+      gap: 10px !important;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .site-frame {
+      margin: 6px !important;
+      border-radius: 18px !important;
+    }
+
+    .nav-outer {
+      top: 14px !important;
+      padding: 0 12px;
+    }
+
+    .nav-pill {
+      width: 100%;
+      max-width: 390px;
+      justify-content: space-between;
+      padding: 11px 14px !important;
+    }
+
+    .nav-pill .brand {
+      font-size: 13px !important;
+    }
+
+    .nav-cta {
+      font-size: 12px !important;
+      padding: 8px 13px !important;
+    }
+
+    .hero-content {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+      gap: 16px !important;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px !important;
+      letter-spacing: .16em !important;
+    }
+
+    .hero-eyebrow .line {
+      width: 18px !important;
+    }
+
+    .wrap {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    .feature-card,
+    .price-card,
+    .review-card {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+
+    .activity-card {
+      aspect-ratio: 4 / 5 !important;
+    }
+  }
+
+
+  /* ============================================================
+     CURATOR FIXES — width, Anlageplan, spacing consistency
+     ============================================================ */
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip !important;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .site-frame,
+  .hero-scroll-container,
+  section,
+  .wrap,
+  .activity-grid,
+  .feature-grid,
+  .price-grid,
+  .reviews-grid,
+  .rest-card,
+  .anlageplan-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  body::before,
+  body::after {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    transform: none !important;
+  }
+
+  .activities,
+  .anlageplan,
+  #family,
+  .restaurant,
+  .pricing,
+  .reviews {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+  }
+
+  .activities .section-head,
+  .anlageplan .section-head,
+  .pricing .section-head,
+  .reviews .section-head {
+    margin-bottom: 48px !important;
+  }
+
+  .anlageplan {
+    width: 100%;
+    overflow: hidden !important;
+    background: rgba(8,23,17,.44) !important;
+  }
+
+  .anlageplan .wrap {
+    width: 100%;
+  }
+
+  .anlageplan-card {
+    width: 100%;
+    overflow: hidden !important;
+    isolation: isolate;
+    contain: paint;
+    border-radius: 24px;
+  }
+
+  .anlageplan-media {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+    overflow: hidden !important;
+  }
+
+  .anlageplan-media img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: none !important;
+  }
+
+  .anlageplan-media::after {
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  @media (max-width: 760px) {
+    html, body {
+      overflow-x: hidden !important;
+    }
+
+    .site-frame {
+      width: calc(100% - 12px) !important;
+      max-width: calc(100% - 12px) !important;
+      margin-left: 6px !important;
+      margin-right: 6px !important;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 100%;
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    .activities,
+    .anlageplan,
+    #family,
+    .restaurant,
+    .pricing,
+    .reviews {
+      padding-top: 68px !important;
+      padding-bottom: 68px !important;
+    }
+
+    .activities .section-head,
+    .anlageplan .section-head,
+    .pricing .section-head,
+    .reviews .section-head {
+      margin-bottom: 34px !important;
+    }
+
+    .anlageplan-card {
+      border-radius: 20px;
+    }
+
+    .anlageplan-media {
+      aspect-ratio: 4 / 3 !important;
+      min-height: 0 !important;
+    }
+
+    .activity-card,
+    .feature-card,
+    .price-card,
+    .review-card,
+    .rest-card,
+    .split-media {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .activities,
+    .anlageplan,
+    #family,
+    .restaurant,
+    .pricing,
+    .reviews {
+      padding-top: 60px !important;
+      padding-bottom: 60px !important;
+    }
+
+    .anlageplan-media {
+      aspect-ratio: 1 / 1 !important;
+    }
+  }
+
+
+
+@media (max-width:760px){
+html,body{width:100%;max-width:100%;overflow-x:hidden!important;-webkit-text-size-adjust:100%}
+.site-frame{width:calc(100% - 8px)!important;max-width:calc(100% - 8px)!important;margin:4px!important;border-radius:18px!important;overflow:hidden!important}
+.nav-outer{top:10px!important;left:8px!important;right:8px!important;width:auto!important}
+.nav-pill{width:100%;max-width:430px;justify-content:space-between;gap:10px!important;padding:10px 12px!important;border-radius:18px!important}
+.nav-pill .brand{font-size:12.5px!important;border:0!important;margin:0!important;padding:0!important;max-width:48vw;overflow:hidden;text-overflow:ellipsis}
+.nav-links{display:none!important}.nav-cta{padding:8px 12px!important;font-size:11.5px!important}
+.hero-scroll-container{height:auto!important;min-height:0!important;overflow:visible!important}
+.hero-scroll-container .hero{position:relative!important;top:auto!important;height:92svh!important;min-height:610px!important;max-height:860px!important;z-index:1!important}
+.hero img,.hero video{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important}
+.hero-content{width:100%!important;max-width:100%!important;padding:0 20px 34px!important;gap:14px!important;align-items:flex-start!important;text-align:left!important;transform:none!important;opacity:1!important}
+.hero h1{font-size:clamp(39px,12vw,58px)!important;line-height:.98!important;max-width:92%}.hero p{font-size:14px!important;line-height:1.55!important;max-width:92%!important}
+.hero-eyebrow{font-size:10px!important;letter-spacing:.16em!important}.hero-eyebrow .line{width:22px!important}
+.hero-actions{width:100%;justify-content:flex-start!important;gap:8px!important}.hero-actions .btn-primary,.hero-actions .btn-ghost{padding:12px 16px!important;font-size:12px!important}
+.hero-corner,.hero-rail,.hero-nav-arrows,.status-chip{display:none!important}
+.hero-scroll-container>.features{position:relative!important;top:auto!important;transform:none!important;min-height:0!important;z-index:2!important;border-radius:22px 22px 0 0!important;margin-top:-18px!important;padding-top:58px!important;padding-bottom:58px!important;overflow:visible!important}
+section:not(.hero){padding-top:62px!important;padding-bottom:62px!important}
+.wrap{width:100%!important;max-width:100%!important;padding-left:16px!important;padding-right:16px!important}
+.section-head{max-width:100%!important;margin-bottom:30px!important}.section-head h2,.split-text h2,.rest-body h2{font-size:clamp(28px,8vw,38px)!important;line-height:1.08!important}
+.feature-grid,.activity-grid,.price-grid,.reviews-grid{grid-template-columns:1fr!important;gap:14px!important}
+.activities{position:relative!important;z-index:4!important;overflow:hidden!important}
+.activity-card{width:100%!important;max-width:100%!important;aspect-ratio:4/5!important;border-radius:20px!important;overflow:hidden!important}
+.activity-label{left:10px!important;right:10px!important;bottom:10px!important;padding:13px 14px!important;border-radius:16px!important}
+.anlageplan,.anlageplan-card,.anlageplan-media{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important}
+.anlageplan-card{border-radius:20px!important}.anlageplan-media{position:relative!important;aspect-ratio:4/3!important;min-height:0!important}
+.anlageplan-media img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important}
+.rest-card,.split{grid-template-columns:1fr!important;gap:0!important;width:100%!important;border-radius:20px!important;overflow:hidden!important}
+.rest-media,.split-media{width:100%!important;min-height:0!important;aspect-ratio:4/3!important;border-radius:0!important}
+.rest-body,.split-text{padding:26px 20px!important}.check-list{gap:10px!important;margin-bottom:22px!important}.check-list li{font-size:13px!important}
+.price-card,.review-card,.feature-card{padding:22px 20px!important;border-radius:18px!important;min-height:0!important}
+.reviews-head{flex-direction:column!important;align-items:stretch!important;gap:20px!important;margin-bottom:28px!important}.reviews-score{width:100%!important;min-width:0!important;text-align:left!important}
+footer{padding:54px 0 24px!important}.footer-top{grid-template-columns:1fr!important;gap:28px!important;padding-bottom:34px!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}
+.price-modal,.menu-modal{padding:12px!important;align-items:flex-end!important}.price-modal-panel,.menu-modal-panel,.family-pass-modal-panel,.attraction-modal-panel{width:100%!important;max-width:100%!important;max-height:88svh!important;overflow-y:auto!important;border-radius:22px 22px 10px 10px!important;padding:22px 16px!important}
+.beacheria-menu-wrap,.family-pass-modal-content{grid-template-columns:1fr!important}.beacheria-menu-page{width:100%!important;min-height:0!important;padding:22px 16px!important;border-radius:16px!important}
+body::before{filter:blur(11px) saturate(.82) brightness(.62)!important}
+.glass,.features,.activities,.split,.restaurant,.pricing,.reviews,.review-card,.feature-card,.price-card,.activity-label{backdrop-filter:blur(7px) saturate(108%)!important;-webkit-backdrop-filter:blur(7px) saturate(108%)!important}
+}
+@media (max-width:390px){
+.hero-scroll-container .hero{min-height:570px!important;height:88svh!important}
+.hero h1{font-size:clamp(36px,11.5vw,48px)!important}
+.hero-actions{flex-direction:column!important;align-items:stretch!important}
+.hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;text-align:center}
+.activity-card{aspect-ratio:1/1.16!important}.anlageplan-media{aspect-ratio:1/1!important}
+}
+
+
+  /* ============================================================
+     FINAL QA / CURATOR / MOBILE PERFORMANCE
+     ============================================================ */
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip !important;
+  }
+
+  body { margin: 0; }
+
+  .site-frame,
+  section,
+  .wrap,
+  .feature-grid,
+  .activity-grid,
+  .price-grid,
+  .reviews-grid,
+  .rest-card,
+  .split,
+  .anlageplan-card,
+  .anlageplan-media {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Prevent large decorative layers from producing horizontal overflow. */
+  body::before,
+  body::after {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Curator: consistent section rhythm. */
+  .activities,
+  .anlageplan,
+  #family,
+  .restaurant,
+  .pricing,
+  .reviews {
+    padding-top: 92px !important;
+    padding-bottom: 92px !important;
+  }
+
+  .activities .section-head,
+  .anlageplan .section-head,
+  .pricing .section-head,
+  .reviews .section-head {
+    margin-bottom: 44px !important;
+  }
+
+  /* Curator: Anlageplan must never spill to the right. */
+  .anlageplan {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .anlageplan .wrap,
+  .anlageplan-card,
+  .anlageplan-media {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .anlageplan-card {
+    isolation: isolate;
+    contain: paint;
+  }
+
+  .anlageplan-media {
+    position: relative !important;
+    aspect-ratio: 16 / 9;
+    min-height: 0 !important;
+  }
+
+  .anlageplan-media img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: none !important;
+  }
+
+  /* Below-fold sections can skip rendering until they are near the viewport. */
+  @supports (content-visibility: auto) {
+    .activities,
+    .anlageplan,
+    #family,
+    .restaurant,
+    .pricing,
+    .reviews,
+    footer {
+      content-visibility: auto;
+      contain-intrinsic-size: 900px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    html, body {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Important for iPhone performance: no huge fixed blurred photo layer. */
+    body::before {
+      display: none !important;
+    }
+
+    body::after {
+      position: fixed !important;
+      inset: 0 !important;
+      background:
+        radial-gradient(circle at 18% 14%, rgba(109,130,98,.14), transparent 30%),
+        linear-gradient(180deg, #081711 0%, #0c2118 48%, #081711 100%) !important;
+    }
+
+    .site-frame {
+      width: calc(100% - 8px) !important;
+      max-width: calc(100% - 8px) !important;
+      margin: 4px !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+    }
+
+    .wrap {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    /* Mobile navigation */
+    .nav-outer {
+      top: 10px !important;
+      left: 8px !important;
+      right: 8px !important;
+      width: auto !important;
+      padding: 0 !important;
+    }
+
+    .nav-pill {
+      width: 100%;
+      max-width: 430px;
+      justify-content: space-between;
+      gap: 10px !important;
+      padding: 10px 12px !important;
+      border-radius: 18px !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(8,23,17,.88) !important;
+    }
+
+    .nav-pill .brand {
+      font-size: 12.5px !important;
+      border-right: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      max-width: 48vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links { display: none !important; }
+
+    .nav-cta {
+      flex-shrink: 0;
+      padding: 8px 12px !important;
+      font-size: 11.5px !important;
+    }
+
+    /* Mobile Hero: normal flow, no sticky collision with second frame. */
+    .hero-scroll-container {
+      height: auto !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      background: transparent !important;
+    }
+
+    .hero-scroll-container > .hero {
+      position: relative !important;
+      top: auto !important;
+      width: 100% !important;
+      height: 90svh !important;
+      min-height: 600px !important;
+      max-height: 820px !important;
+      z-index: 1 !important;
+      will-change: auto !important;
+    }
+
+    .hero img,
+    .hero video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      transform: none !important;
+      will-change: auto !important;
+    }
+
+    .hero-content {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 20px 34px !important;
+      gap: 14px !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+      transform: none !important;
+      opacity: 1 !important;
+      will-change: auto !important;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 11.5vw, 56px) !important;
+      line-height: .99 !important;
+      max-width: 94%;
+    }
+
+    .hero p {
+      font-size: 14px !important;
+      line-height: 1.55 !important;
+      max-width: 94% !important;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px !important;
+      letter-spacing: .14em !important;
+    }
+
+    .hero-eyebrow .line { width: 20px !important; }
+
+    .hero-actions {
+      width: 100%;
+      justify-content: flex-start !important;
+      gap: 8px !important;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-ghost {
+      padding: 12px 15px !important;
+      font-size: 12px !important;
+    }
+
+    .hero-corner,
+    .hero-rail,
+    .hero-nav-arrows,
+    .status-chip {
+      display: none !important;
+    }
+
+    /* Second frame becomes a normal section on touch devices. */
+    .hero-scroll-container > .features {
+      position: relative !important;
+      top: auto !important;
+      transform: none !important;
+      min-height: 0 !important;
+      z-index: 2 !important;
+      margin-top: -16px !important;
+      border-radius: 22px 22px 0 0 !important;
+      padding-top: 56px !important;
+      padding-bottom: 56px !important;
+      overflow: visible !important;
+      will-change: auto !important;
+    }
+
+    /* Uniform mobile spacing requested by curator. */
+    .activities,
+    .anlageplan,
+    #family,
+    .restaurant,
+    .pricing,
+    .reviews {
+      padding-top: 62px !important;
+      padding-bottom: 62px !important;
+    }
+
+    .activities .section-head,
+    .anlageplan .section-head,
+    .pricing .section-head,
+    .reviews .section-head {
+      margin-bottom: 30px !important;
+    }
+
+    .section-head {
+      max-width: 100% !important;
+    }
+
+    .section-head h2,
+    .split-text h2,
+    .rest-body h2 {
+      font-size: clamp(28px, 8vw, 38px) !important;
+      line-height: 1.08 !important;
+    }
+
+    .section-head p,
+    .split-text p,
+    .rest-body p {
+      font-size: 14px !important;
+      line-height: 1.62 !important;
+    }
+
+    .feature-grid,
+    .activity-grid,
+    .price-grid,
+    .reviews-grid {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
+
+    .feature-card,
+    .price-card,
+    .review-card {
+      padding: 22px 20px !important;
+      border-radius: 18px !important;
+      min-height: 0 !important;
+    }
+
+    /* Attractions: no overlap from previous frame. */
+    .activities {
+      position: relative !important;
+      z-index: 4 !important;
+      overflow: hidden !important;
+    }
+
+    .activity-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      aspect-ratio: 4 / 5 !important;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      isolation: isolate;
+    }
+
+    .activity-card img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+
+    .activity-label {
+      left: 10px !important;
+      right: 10px !important;
+      bottom: 10px !important;
+      padding: 13px 14px !important;
+      border-radius: 16px !important;
+    }
+
+    /* Anlageplan mobile containment. */
+    .anlageplan-card {
+      border-radius: 20px !important;
+    }
+
+    .anlageplan-media {
+      aspect-ratio: 4 / 3 !important;
+    }
+
+    /* Family + restaurant */
+    .rest-card,
+    .split {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+      width: 100% !important;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+    }
+
+    .rest-media,
+    .split-media {
+      width: 100% !important;
+      min-height: 0 !important;
+      aspect-ratio: 4 / 3 !important;
+      border-radius: 0 !important;
+    }
+
+    .rest-body,
+    .split-text {
+      padding: 26px 20px !important;
+    }
+
+    .check-list {
+      gap: 10px !important;
+      margin-bottom: 22px !important;
+    }
+
+    .check-list li {
+      font-size: 13px !important;
+    }
+
+    .reviews-head {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 20px !important;
+      margin-bottom: 28px !important;
+    }
+
+    .reviews-score {
+      width: 100% !important;
+      min-width: 0 !important;
+      text-align: left !important;
+    }
+
+    /* Footer */
+    footer {
+      padding: 52px 0 24px !important;
+    }
+
+    .footer-top {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+      padding-bottom: 32px !important;
+    }
+
+    .footer-bottom {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+    }
+
+    /* Bottom-sheet modals on phone */
+    .price-modal,
+    .menu-modal {
+      padding: 10px !important;
+      align-items: flex-end !important;
+    }
+
+    .price-modal-panel,
+    .menu-modal-panel,
+    .family-pass-modal-panel,
+    .attraction-modal-panel {
+      width: 100% !important;
+      max-width: 100% !important;
+      max-height: 88svh !important;
+      overflow-y: auto !important;
+      border-radius: 22px 22px 10px 10px !important;
+      padding: 22px 16px !important;
+    }
+
+    .beacheria-menu-wrap,
+    .family-pass-modal-content {
+      grid-template-columns: 1fr !important;
+    }
+
+    .beacheria-menu-page {
+      width: 100% !important;
+      min-height: 0 !important;
+      padding: 22px 16px !important;
+      border-radius: 16px !important;
+    }
+
+    /* Remove expensive backdrop-filter chains on mobile. */
+    .glass,
+    .features,
+    .activities,
+    .split,
+    .restaurant,
+    .pricing,
+    .reviews,
+    .review-card,
+    .feature-card,
+    .price-card,
+    .activity-label,
+    footer {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .glass,
+    .feature-card,
+    .price-card,
+    .review-card,
+    .activity-label {
+      background: rgba(242,244,234,.065) !important;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .hero-scroll-container > .hero {
+      height: 86svh !important;
+      min-height: 560px !important;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 11vw, 47px) !important;
+    }
+
+    .hero-actions {
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-ghost {
+      width: 100%;
+      text-align: center;
+    }
+
+    .activity-card {
+      aspect-ratio: 1 / 1.16 !important;
+    }
+
+    .anlageplan-media {
+      aspect-ratio: 1 / 1 !important;
+    }
+  }
+
+</style>
+
+
+  <link rel="icon" type="image/png" href="favicon.png?v=4">
+  <link rel="shortcut icon" href="favicon.ico?v=4">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
+
+</head>
+<body>
+
+  <div class="nav-outer">
+    <nav class="nav-pill">
+      <span class="brand">Mountain&nbsp;Beach</span>
+      <div class="nav-links">
+        <a href="#activities">Attraktionen</a>
+        <a href="#family">Für Familien</a>
+        <a href="#restaurant">Restaurant</a>
+      </div>
+      <a href="#pricing" class="nav-cta">Ticket kaufen</a>
+    </nav>
+  </div>
+
+  <div class="site-frame">
+
+  <div class="hero-scroll-container" id="hero-scroll-container">
+  <section class="hero">
+    <img src="images/image-01-4ab62fc3ac.png" alt="Mountain Beach Panorama" loading="eager" decoding="async" fetchpriority="high">
+
+    <div class="hero-corner">
+      <span class="corner-label">Kontakt</span>
+      <span class="corner-icon">✉</span>
+      <span class="corner-icon">☎</span>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="line"></span> GASCHURN · MONTAFON · ÖSTERREICH <span class="line"></span></div>
+      <h1>Dein <em>Mountain Beach</em><br>wartet</h1>
+      <p>Natürliche Badeseen mit frischem Quellwasser mitten in den Alpen — ohne Chlor, ohne Grenzen, ohne langweilige Tage.</p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">Tickets für heute</a>
+        <a href="#activities" class="btn-ghost">Attraktionen entdecken</a>
+      </div>
+    </div>
+
+    <div class="hero-rail">
+      <span class="rail-arrow">▲</span>
+      <span class="rail-line"></span>
+      <span class="rail-diamond"></span>
+      <span class="rail-line"></span>
+      <span class="rail-arrow">▼</span>
+    </div>
+
+    <div class="hero-nav-arrows">
+      <a href="#" aria-label="Zurück">←</a>
+      <a href="#activities" aria-label="Weiter">→</a>
+    </div>
+
+    <div class="status-chip glass">
+      <span class="status-dot"></span> Heute geöffnet · 9:00–19:00 Uhr
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Besonderheiten</span>
+        <h2>Kein Pool. Ein See.</h2>
+        <p class="center">Der einzige Freizeitpark dieser Art in Österreich — Baden im Naturwasser und zahlreiche Attraktionen an einem Ort.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card glass">
+          <span class="num">01</span>
+          <h3>Quellwasser</h3>
+          <p>Direkt aus den Bergen des Montafon — frisch und klar an jedem Tag der Saison.</p>
+        </div>
+        <div class="feature-card glass">
+          <span class="num">02</span>
+          <h3>Ohne Chlor</h3>
+          <p>Über 13.000 Wasserpflanzen reinigen das Wasser auf natürliche Weise — ideal bei Chlorallergien.</p>
+        </div>
+        <div class="feature-card glass">
+          <span class="num">03</span>
+          <h3>27.000 m² Areal</h3>
+          <p>Davon rund 7.000 m² Wasserfläche — viel Platz, auch in der Hochsaison.</p>
+        </div>
+        <div class="feature-card glass">
+          <span class="num">04</span>
+          <h3>Bei jedem Wetter</h3>
+          <p>Das angeschlossene Hallenbad mit 28°C macht auch einen Regentag zum Badetag.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <section class="activities" id="activities">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Attraktionen</span>
+        <h2>Langeweile? Fehlanzeige.</h2>
+        <p>Von der actionreichen Rutsche bis zum ruhigen Abend beim Tischtennis — bestimme dein eigenes Tempo.</p>
+      </div>
+      <div class="activity-grid">
+        <div class="activity-card">
+          <img src="images/image-03-30dec2eea2.jpg" alt="Rafting" loading="lazy" decoding="async">
+          <div class="activity-label">
+            <div><h4>Rafting-Strecke</h4><span>Für aktive Gruppen</span></div>
+            <button class="arrow-circ attraction-info-trigger" type="button" data-attraction="Rafting-Strecke" aria-label="Mehr über Rafting-Strecke erfahren">→</button>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img src="images/image-04-50e25412af.jpg" alt="Air Bubble" loading="lazy" decoding="async">
+          <div class="activity-label">
+            <div><h4>Air Bubble</h4><span>Springen auf dem Hüpfpolster</span></div>
+            <button class="arrow-circ attraction-info-trigger" type="button" data-attraction="Air Bubble" aria-label="Mehr über Air Bubble erfahren">→</button>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img src="images/image-05-e338f08550.jpg" alt="Air Bubble Junior" loading="lazy" decoding="async">
+          <div class="activity-label">
+            <div><h4>Air Bubble Junior</h4><span>Die kleinere Variante für Kinder</span></div>
+            <button class="arrow-circ attraction-info-trigger" type="button" data-attraction="Air Bubble Junior" aria-label="Mehr über Air Bubble Junior erfahren">→</button>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img src="images/image-06-7286ea0cd8.jpg" alt="Beachvolleyball" loading="lazy" decoding="async">
+          <div class="activity-label">
+            <div><h4>Beachvolleyball</h4><span>Und Tischtennis gleich daneben</span></div>
+            <button class="arrow-circ attraction-info-trigger" type="button" data-attraction="Beachvolleyball" aria-label="Mehr über Beachvolleyball erfahren">→</button>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img src="images/image-07-66bba2634b.jpg" alt="Floß" loading="lazy" decoding="async">
+          <div class="activity-label">
+            <div><h4>Floß</h4><span>Überfahrt über den See</span></div>
+            <button class="arrow-circ attraction-info-trigger" type="button" data-attraction="Floß" aria-label="Mehr über Floß erfahren">→</button>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img src="https://res.cloudinary.com/lsnj2ndq/image/upload/v1786980046/seilrutsche.jpg" alt="Mini-Seilbahn" loading="lazy" decoding="async">
+          <div class="activity-label">
+            <div><h4>Mini-Seilbahn</h4><span>Blick von oben auf den Park</span></div>
+            <button class="arrow-circ attraction-info-trigger" type="button" data-attraction="Mini-Seilbahn" aria-label="Mehr über Mini-Seilbahn erfahren">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="anlageplan" id="anlageplan">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Anlageplan</span>
+        <h2>Mountain Beach auf einen Blick</h2>
+        <p>Ein visueller Überblick über die Anlage und die wichtigsten Attraktionen des Freizeitparks.</p>
+      </div>
+      <div class="anlageplan-card">
+        <div class="anlageplan-media">
+          <img src="https://gb.bio.top/images/cache/l-gb/t-regular/f-natural-pool-austria-raft-ride/q-90/natural-pool-austria-raft-ride.jpg" alt="Luftansicht des Mountain Beach Freizeitparks in Gaschurn" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="family">
+    <div class="wrap">
+      <div class="rest-card glass">
+        <div class="rest-media">
+          
+          <img src="https://res.cloudinary.com/lsnj2ndq/image/upload/v1786984678/91800023-EF2A-4422-8942-3566BC5FCFC4.png" alt="Kinder am Wasser" loading="lazy" decoding="async">
+        </div>
+        <div class="rest-body">
+          <span class="eyebrow">Für Familien</span>
+          <h2>Sicher und lustig — schon für die Jüngsten</h2>
+          <p>Ein eigener Kinderplansch, eine Kletterpyramide, Schaukeln und Spielfiguren — Kinder finden hier ihren eigenen Bereich, ganz in der Nähe der Eltern.</p>
+          <ul class="check-list">
+            <li><span class="dot"></span> Flacher Kinderplansch</li>
+            <li><span class="dot"></span> Kletterpyramide</li>
+            <li><span class="dot"></span> Schaukeln und Spielfiguren</li>
+            <li><span class="dot"></span> Freie Sicht auf den Kinderbereich von der Liegewiese</li>
+          </ul>
+          <a href="#" class="btn-ghost js-open-family-pass">Familienticket</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="restaurant" id="restaurant">
+    <div class="wrap">
+      <div class="rest-card glass">
+        <div class="rest-media">
+          <img src="https://res.cloudinary.com/lsnj2ndq/image/upload/v1786984654/6A56C1C7-3B83-49D5-B3A9-4488B9A3222F.png" alt="Terrasse der Beacheria" loading="lazy" decoding="async">
+        </div>
+        <div class="rest-body">
+          <span class="eyebrow">Gastronomie</span>
+          <h2>Hunger? Die Beacheria auf der Terrasse wartet</h2>
+          <p>Gutbürgerliche Küche und leichte Sommersnacks — mit Blick auf See und Berge, ganz ohne den Strand zu verlassen.</p>
+          <a href="#" class="btn-primary js-open-menu">Speisekarte ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Tickets</span>
+        <h2>Wähle deine Art des Badevergnügens</h2>
+        <p class="center">Tageskarte, Saisonkarte oder Ermäßigung mit der Montafon-Gästekarte — du entscheidest.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price-card glass">
+          <span class="plan-name">TAGESKARTE</span>
+          <div>
+            <h3 class="price-card-title">Ein Tag im Mountain Beach</h3>
+            <p class="price-card-copy">Alle Eintrittspreise für Tagesgäste kompakt auf einen Blick.</p>
+          </div>
+          <div class="price-card-actions">
+            <a href="#" class="btn-ghost js-open-prices" data-price-type="day">Preise ansehen</a>
+          </div>
+        </div>
+        <div class="price-card glass featured">
+          <span class="plan-name">SAISON & BÄDERPASS</span>
+          <div>
+            <h3 class="price-card-title">Den ganzen Sommer</h3>
+            <p class="price-card-copy">Wähle zwischen der Mountain-Beach-Saisonkarte und dem Montafoner Bade(s)pass.</p>
+          </div>
+          <div class="price-card-actions">
+            <a href="#" class="btn-primary js-open-prices" data-price-type="season">Saisonkarte</a>
+            <a href="#" class="btn-ghost js-open-prices" data-price-type="badepass">Bade(s)pass</a>
+          </div>
+        </div>
+        <div class="price-card glass birthday-card">
+          <span class="plan-name">GEBURTSTAG</span>
+          <div>
+            <div class="birthday-icon">✦</div>
+            <h3 class="birthday-title">Dein besonderer Tag</h3>
+            <p class="birthday-teaser">Für Geburtstagskinder gibt es bei uns eine kleine Besonderheit.</p>
+          </div>
+          <div class="price-card-actions">
+            <a href="#" class="btn-ghost js-open-prices" data-price-type="birthday">Entdecken</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="reviews-head">
+        <div class="section-head">
+          <span class="eyebrow">Google Bewertungen</span>
+          <h2>Was Gäste über Mountain Beach sagen</h2>
+          <p>Ausgewählte positive Rückmeldungen von Besucherinnen und Besuchern.</p>
+        </div>
+        <div class="reviews-score">
+          <strong>4,5 / 5</strong>
+          <div class="stars">★★★★★</div>
+          <span>120 veröffentlichte Bewertungen</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>Wunderschöner Natursee, sehr freundliches Personal und eine entspannte Atmosphäre mitten in den Bergen.</blockquote>
+          <div class="review-meta">
+            <span class="review-name">Manuela Jaug</span>
+            <span class="review-source">Google</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>Für Familien ein echtes Highlight – besonders Rafting, Wasserspielplatz und die vielen Attraktionen für Kinder.</blockquote>
+          <div class="review-meta">
+            <span class="review-name">Johannes E</span>
+            <span class="review-source">Google</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>Ein sehr schönes Naturbad mit viel Platz zum Entspannen und einer großartigen Abkühlung nach einer Wanderung.</blockquote>
+          <div class="review-meta">
+            <span class="review-name">Nico Wickersheim</span>
+            <span class="review-source">Google</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>Ein perfekter Badetag mit Kindern: naturbelassen, abwechslungsreich und mit viel Spaß auf der Wildwasserstrecke.</blockquote>
+          <div class="review-meta">
+            <span class="review-name">Nicole Pfefferkorn</span>
+            <span class="review-source">Google</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>Sehr gepflegt, gemütlich und wunderbar in die Natur integriert – mit Spielplatz, Volleyball und Gastronomie.</blockquote>
+          <div class="review-meta">
+            <span class="review-name">o. Ka.wie.</span>
+            <span class="review-source">Google</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>Ein tolles Naturbad für die ganze Familie, mit schönen Liegewiesen, viel Abwechslung und jeder Menge Spaß für Kinder.</blockquote>
+          <div class="review-meta">
+            <span class="review-name">Martin Baars</span>
+            <span class="review-source">Google</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="reviews-note">Bewertungen redaktionell gekürzt bzw. zusammengefasst; Namen und Quelle stammen aus veröffentlichten Google-Bewertungen.</p>
+    </div>
+  </section>
+
+
+
+  <div class="price-modal" id="price-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="price-modal-title">
+    <div class="price-modal-panel">
+      <button class="price-modal-close" type="button" aria-label="Preise schließen">×</button>
+      <div class="price-modal-head">
+        <span class="eyebrow" id="price-modal-eyebrow">Preise</span>
+        <h3 id="price-modal-title">Tageskarte</h3>
+        <p id="price-modal-subtitle">Eintrittspreise für einen Badetag im Mountain Beach.</p>
+      </div>
+      <div id="price-modal-content"></div>
+    </div>
+  </div>
+
+  <div class="price-modal menu-modal" id="menu-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+    <div class="price-modal-panel menu-modal-panel">
+      <button class="price-modal-close menu-modal-close" type="button" aria-label="Speisekarte schließen">×</button>
+      <div class="price-modal-head">
+        <span class="eyebrow">Beacheria</span>
+        <h3 id="menu-modal-title">Speisekarte</h3>
+        <p>Originale Speise- und Getränkekarte der Beacheria im Mountain Beach.</p>
+      </div>
+
+      <div class="beacheria-menu-wrap">
+        <article class="beacheria-menu-page">
+          <div class="beacheria-menu-top">
+            <div class="beacheria-menu-title">Beacheria<span>Speisekarte</span></div>
+            <img class="beacheria-logo" src="images/image-08-0cee68e9c7.png" alt="Mountain Beach Logo" loading="lazy" decoding="async">
+          </div>
+
+          <div class="beacheria-section-title">HAUPTSPEISEN</div>
+          <div class="beacheria-menu-list">
+            <div class="beacheria-row"><div><span class="beacheria-name">Wienerle mit Brot</span><span class="beacheria-allergen">(A;G;C;P;H;N;F)</span></div><span class="beacheria-price">6,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Hot Dog</span><span class="beacheria-allergen">(A;G;C;P;H;N;F)</span></div><span class="beacheria-price">5,50 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Currywurst mit Brot</span><span class="beacheria-allergen">(A;G;H;F;S;N)</span></div><span class="beacheria-price">6,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Schinken-Käse-Toast</span><span class="beacheria-allergen">(A;G;F;C;N;D)</span></div><span class="beacheria-price">5,70 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Zack-Zack</span><span class="beacheria-allergen">(A;G;H;F;N)</span></div><span class="beacheria-price">6,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Schnitzelsemmel</span><span class="beacheria-allergen">(A;G;H;F;N)</span></div><span class="beacheria-price">6,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Pommes frites</span><span class="beacheria-note-inline">mit Ketchup oder Mayo</span><span class="beacheria-allergen">(S;C)</span></div><span class="beacheria-price">4,50 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Chicken frites gebacken</span><span class="beacheria-allergen">(A;C)</span></div><span class="beacheria-price">6,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Beachsalat mit geb. Hühnerstreifen</span><span class="beacheria-allergen">(A;S;C)</span></div><span class="beacheria-price">13,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Blattsalate mit geb. Rösttaschen</span><span class="beacheria-allergen">(A;S;C)</span></div><span class="beacheria-price">13,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Schnitzel &quot;Wiener Art&quot; mit Pommes Frites</span><span class="beacheria-allergen">(A;C;G)</span></div><span class="beacheria-price">13,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Laugenbrezel</span><span class="beacheria-allergen">(A;N;F)</span></div><span class="beacheria-price">3,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Wurstsalat</span><span class="beacheria-allergen">(A;G;H;F;N;S)</span></div><span class="beacheria-price">11,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Beachburger</span><span class="beacheria-allergen">(A;H;F;G;S;N)</span></div><span class="beacheria-price">7,20 €</span></div>
+          </div>
+
+          <div class="beacheria-section-title beacheria-dessert">DESSERT</div>
+          <div class="beacheria-menu-list">
+            <div class="beacheria-row"><div><span class="beacheria-name">Eisbecher</span><span class="beacheria-allergen">(G)</span></div><span class="beacheria-price">7,60 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Gemischtes Eis (3 Kugeln)</span><span class="beacheria-allergen">(G)</span></div><span class="beacheria-price">6,50 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Gemischtes Eis mit Sahne</span><span class="beacheria-allergen">(G)</span></div><span class="beacheria-price">7,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Kuchenangebot</span><span class="beacheria-allergen">(A;C;G;N;F;H;E)</span></div><span class="beacheria-price">5,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Kuchen und Kaffee</span><span class="beacheria-allergen">(A;C;G;N;F;H;E)</span></div><span class="beacheria-price">6,50 €</span></div>
+          </div>
+        </article>
+
+        <article class="beacheria-menu-page">
+          <div class="beacheria-menu-top">
+            <div class="beacheria-menu-title">Beacheria<span>Getränkekarte</span></div>
+            <img class="beacheria-logo" src="images/image-08-0cee68e9c7.png" alt="Mountain Beach Logo" loading="lazy" decoding="async">
+          </div>
+
+          <div class="beacheria-menu-list">
+            <div class="beacheria-row"><div><span class="beacheria-name">Espresso</span></div><span class="beacheria-price">3,30 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Kaffee</span></div><span class="beacheria-price">3,50 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Cappuccino</span><span class="beacheria-allergen">(G)</span></div><span class="beacheria-price">3,90 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Latte Macchiato</span><span class="beacheria-allergen">(G)</span></div><span class="beacheria-price">4,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Tee</span></div><span class="beacheria-price">3,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Gespritzter Rot / Weiß 1/4 l</span><span class="beacheria-allergen">(O)</span></div><span class="beacheria-price">4,00 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Hefeweizen 0,5 l</span><span class="beacheria-allergen">(A)</span></div><span class="beacheria-price">5,60 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Bier 0,3 l</span><span class="beacheria-allergen">(A)</span></div><span class="beacheria-price">4,10 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Bier 0,5 l</span><span class="beacheria-allergen">(A)</span></div><span class="beacheria-price">4,90 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Radler 0,3 l</span><span class="beacheria-allergen">(A)</span></div><span class="beacheria-price">4,10 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Radler 0,5 l</span><span class="beacheria-allergen">(A)</span></div><span class="beacheria-price">4,90 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Jugenddrink 0,50 l</span></div><span class="beacheria-price">2,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Mineralwasser 0,50 l</span></div><span class="beacheria-price">3,40 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Quellwasser oder Soda 0,5 l</span></div><span class="beacheria-price">2,20 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Eistee Pfirsich 0,5 l</span></div><span class="beacheria-price">3,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Limo 0,5 l</span></div><span class="beacheria-price">3,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Apfelsaft / Johannisbeersaft gespr. 0,5 l</span></div><span class="beacheria-price">3,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Cola 0,5 l</span></div><span class="beacheria-price">3,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Red Bull</span></div><span class="beacheria-price">3,80 €</span></div>
+<div class="beacheria-row"><div><span class="beacheria-name">Aperol Spritz</span><span class="beacheria-allergen">(O)</span></div><span class="beacheria-price">6,30 €</span></div>
+          </div>
+
+          <div class="beacheria-legal">
+            In unserem Betrieb werden Gerichte mit allen im Anhang II der LMIV angeführten allergenen Stoffen zubereitet.
+            Unbeabsichtigte Kreuzkontakte können daher nicht ausgeschlossen werden.
+            A=glutenhaltiges Getreide / C=Eier / G=Milch/Laktose / F=Soja /
+            L=Sellerie / N=Sesam / O=Schwefeldioxid-Sulphite / H=Schalenfrüchte /
+            E=Erdnüsse / S=Senf / P=Lupinen / D=Fisch / B=Krebstiere / R=Weichtiere
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="price-modal" id="family-pass-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="family-pass-title">
+    <div class="price-modal-panel family-pass-modal-panel">
+      <button class="price-modal-close family-pass-modal-close" type="button" aria-label="Familienpass schließen">×</button>
+
+      <div class="price-modal-head">
+        <span class="eyebrow">Für Familien</span>
+        <h3 id="family-pass-title">Vorarlberger Familienpass</h3>
+        <p>Der Familienpass gilt auch im Mountain Beach.</p>
+      </div>
+
+      <div class="family-pass-modal-content">
+        <div class="family-pass-visual">
+          <img
+            src="https://www.rankweil.at/system/web/GetImage.ashx?cropping=CENTER&amp;cts=639045108770600000&amp;fileId=1306110&amp;height=480&amp;mode=T&amp;width=640"
+            alt="Vorarlberger Familienpass 2026" loading="lazy" decoding="async">
+        </div>
+
+        <div class="family-pass-copy">
+          <h4>Gemeinsam günstiger ins Mountain Beach</h4>
+          <p>Mit dem Vorarlberger Familienpass könnt ihr den Familientarif auch bei uns nutzen.</p>
+
+          <div class="family-pass-rule">
+            <strong>So funktioniert’s</strong>
+            <span>Ein oder beide Elternteile plus das älteste Kind bezahlen. Alle weiteren Kinder erhalten freien Eintritt.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="price-modal" id="attraction-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="attraction-modal-title">
+    <div class="price-modal-panel attraction-modal-panel">
+      <button class="price-modal-close attraction-modal-close" type="button" aria-label="Information schließen">×</button>
+      <div class="price-modal-head">
+        <span class="eyebrow" id="attraction-modal-tag">Attraktion</span>
+        <h3 id="attraction-modal-title">Attraktion</h3>
+      </div>
+      <div class="attraction-modal-copy">
+        <p id="attraction-modal-text"></p>
+        <div class="attraction-modal-note" id="attraction-modal-note"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="serif">Mountain Beach</span>
+          <p>Freizeitpark Mountain Beach · natürlicher Badepark im Herzen des Montafon, Österreich.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Freizeitpark</h5>
+          <a href="#activities">Attraktionen</a>
+          <a href="#family">Für Familien</a>
+        </div>
+        <div class="footer-col">
+          <h5>Informationen</h5>
+          <a href="#restaurant">Beacheria</a>
+          <a href="#pricing">Tickets</a>
+          <a href="#">Öffnungszeiten</a>
+        </div>
+        <div class="footer-col">
+          <h5>Kontakt</h5>
+          <span>Mountain Beach 127, 6793 Gaschurn</span>
+        <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&query=Mountain+Beach+127%2C+6793+Gaschurn%2C+Austria" target="_blank" rel="noopener noreferrer">In Google Maps öffnen ↗</a>
+          <a class="footer-contact-link" href="tel:+436645193563">+43 664 5193 563</a>
+          <a class="footer-contact-link" href="mailto:info@mountainbeach.at">info@mountainbeach.at</a>
+          <a class="footer-contact-link footer-instagram-link" href="https://www.instagram.com/mountainbeach_gaschurn/" target="_blank" rel="noopener noreferrer">Instagram · @mountainbeach_gaschurn ↗</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Mountain Beach Freizeitpark GmbH</span>
+        <span>Design-Entwurf für Portfolio</span>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /site-frame -->
+
+
+<script>
+(function(){
+  const scrollContainer = document.getElementById('hero-scroll-container');
+  if (!scrollContainer) return;
+
+  const hero = scrollContainer.querySelector('.hero');
+  const heroImage = hero ? hero.querySelector(':scope > img') : null;
+  const heroContent = hero ? hero.querySelector('.hero-content') : null;
+  const heroCorner = hero ? hero.querySelector('.hero-corner') : null;
+  const heroRail = hero ? hero.querySelector('.hero-rail') : null;
+  const heroArrows = hero ? hero.querySelector('.hero-nav-arrows') : null;
+  const statusChip = hero ? hero.querySelector('.status-chip') : null;
+  const features = scrollContainer.querySelector('.features');
+
+  let ticking = false;
+
+  function setHeroVh(){
+    const h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--hero-vh', h + 'px');
+  }
+
+  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+  function easeInOut(t){
+    return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2;
+  }
+
+  function update(){
+    ticking = false;
+    if (!hero || !features) return;
+
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      heroContent && (heroContent.style.transform = '');
+      heroContent && (heroContent.style.opacity = '');
+      [heroCorner, heroRail, heroArrows, statusChip].forEach(el => {
+        if (el) el.style.opacity = '';
+      });
+      if (heroImage) {
+        heroImage.style.transform = '';
+        heroImage.style.filter = '';
+      }
+      features.style.transform = '';
+      return;
+    }
+
+    const rect = scrollContainer.getBoundingClientRect();
+    const track = scrollContainer.offsetHeight - window.innerHeight;
+    if (track <= 0) return;
+
+    const passed = clamp(-rect.top, 0, track);
+    const progress = clamp(passed / track, 0, 1);
+
+    // Original hero content gently rises and disappears (same logic as the reference animation).
+    const textP = clamp(progress / 0.30, 0, 1);
+    const textEase = easeInOut(textP);
+    if (heroContent){
+      heroContent.style.transform = `translateY(${-90 * textEase}px)`;
+      heroContent.style.opacity = (1 - textEase).toFixed(3);
+    }
+
+    // Keep the user's existing auxiliary hero UI, only fade it with the hero.
+    const uiOpacity = (1 - clamp(progress / 0.36, 0, 1)).toFixed(3);
+    [heroCorner, heroRail, heroArrows, statusChip].forEach(el => {
+      if (el) el.style.opacity = uiOpacity;
+    });
+
+    // Subtle cinematic push on the existing Mountain Beach photo; no image replacement.
+    if (heroImage){
+      const imgP = clamp(progress / 0.62, 0, 1);
+      heroImage.style.transform = `scale(${(1 + imgP * 0.055).toFixed(4)})`;
+      heroImage.style.filter = `saturate(1.05) brightness(${(0.78 - imgP * 0.08).toFixed(3)})`;
+    }
+
+    // Next original section rides over the hero, matching the template's sticky transition.
+    const s2P = clamp((progress - 0.55) / 0.45, 0, 1);
+    const s2Ease = easeInOut(s2P);
+    const vh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hero-vh')) || window.innerHeight;
+    features.style.transform = `translateY(${(1 - s2Ease) * vh}px)`;
+  }
+
+  function requestUpdate(){
+    if (!ticking){
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  setHeroVh();
+  update();
+  window.addEventListener('scroll', requestUpdate, {passive:true});
+  window.addEventListener('resize', () => { setHeroVh(); requestUpdate(); }, {passive:true});
+  if (window.visualViewport){
+    window.visualViewport.addEventListener('resize', () => { setHeroVh(); requestUpdate(); }, {passive:true});
+  }
+})();
+
+
+  // Price cards open only their own relevant information.
+  const priceModal = document.getElementById('price-modal');
+  const priceClose = priceModal ? priceModal.querySelector('.price-modal-close') : null;
+  const priceTitle = document.getElementById('price-modal-title');
+  const priceSubtitle = document.getElementById('price-modal-subtitle');
+  const priceContent = document.getElementById('price-modal-content');
+
+  const priceViews = {
+    day: {
+      title: 'Tageskarte',
+      subtitle: 'Eintrittspreise für einen Badetag im Mountain Beach.',
+      html: `<table class="official-price-table"><tbody>
+        <tr><td>Erwachsene</td><td>7,00 €</td></tr>
+        <tr><td>Kinder Jahrgang 2010–2019</td><td>5,00 €</td></tr>
+        <tr><td>Vergünstigte</td><td>6,40 €</td></tr>
+        <tr><td>Abendkarte (16:00–19:00)</td><td>4,80 €</td></tr>
+      </tbody></table>`
+    },
+    season: {
+      title: 'Saisonkarte Mountain Beach',
+      subtitle: 'Saisonkarte ausschließlich für Mountain Beach Gaschurn.',
+      html: `<table class="official-price-table"><tbody>
+        <tr><td>Erwachsene</td><td>87,00 €</td></tr>
+        <tr><td>Kinder Jahrgang 2010–2019</td><td>61,00 €</td></tr>
+        <tr><td>Vergünstigte</td><td>80,00 €</td></tr>
+      </tbody></table>`
+    },
+    badepass: {
+      title: 'Montafoner Bade(s)pass',
+      subtitle: 'Saisonpass für mehrere Montafoner Freibäder.',
+      html: `<table class="official-price-table"><tbody>
+        <tr><td>Erwachsene</td><td>130,00 €</td></tr>
+        <tr><td>Kinder Jahrgang 2010–2019</td><td>92,00 €</td></tr>
+        <tr><td>Vergünstigte</td><td>122,00 €</td></tr>
+      </tbody></table>
+      <div class="price-notes" style="margin-top:16px"><span class="price-note">Gültig für Freibad Partenen, Mountain Beach Gaschurn, Aquarena St. Gallenkirch, Alpenbad Schruns-Tschagguns und Rätikonbad Vandans.</span></div>`
+    },
+    birthday: {
+      title: 'Geburtstag',
+      subtitle: '',
+      html: `<div class="price-notes" style="margin-top:8px"><span class="price-note">Geburtstagskinder haben an ihrem Geburtstag freien Eintritt ins Mountain Beach.</span></div>`
+    }
+  };
+
+  document.querySelectorAll('.js-open-prices').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const view = priceViews[btn.dataset.priceType || 'day'];
+      if (priceTitle) priceTitle.textContent = view.title;
+      if (priceSubtitle) {
+        priceSubtitle.textContent = view.subtitle;
+        priceSubtitle.style.display = view.subtitle ? '' : 'none';
+      }
+      if (priceContent) priceContent.innerHTML = view.html;
+      priceModal.classList.add('is-open');
+      priceModal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+    });
+  });
+  function closePriceModal(){
+    if(!priceModal) return;
+    priceModal.classList.remove('is-open');
+    priceModal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+  if(priceClose) priceClose.addEventListener('click', closePriceModal);
+  if(priceModal) priceModal.addEventListener('click', (e) => { if(e.target === priceModal) closePriceModal(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closePriceModal(); });
+
+
+  // Beacheria menu modal.
+  const menuModal = document.getElementById('menu-modal');
+  const menuClose = menuModal ? menuModal.querySelector('.menu-modal-close') : null;
+  document.querySelectorAll('.js-open-menu').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      menuModal.classList.add('is-open');
+      menuModal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+    });
+  });
+  function closeMenuModal(){
+    if(!menuModal) return;
+    menuModal.classList.remove('is-open');
+    menuModal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+  if(menuClose) menuClose.addEventListener('click', closeMenuModal);
+  if(menuModal) menuModal.addEventListener('click', (e) => { if(e.target === menuModal) closeMenuModal(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenuModal(); });
+
+
+  // Vorarlberger Familienpass modal.
+  const familyPassModal = document.getElementById('family-pass-modal');
+  const familyPassClose = familyPassModal ? familyPassModal.querySelector('.family-pass-modal-close') : null;
+
+  document.querySelectorAll('.js-open-family-pass').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(!familyPassModal) return;
+      familyPassModal.classList.add('is-open');
+      familyPassModal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+    });
+  });
+
+  function closeFamilyPassModal(){
+    if(!familyPassModal) return;
+    familyPassModal.classList.remove('is-open');
+    familyPassModal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+
+  if(familyPassClose) familyPassClose.addEventListener('click', closeFamilyPassModal);
+  if(familyPassModal) familyPassModal.addEventListener('click', (e) => {
+    if(e.target === familyPassModal) closeFamilyPassModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeFamilyPassModal();
+  });
+
+
+  // Attraction information opens only after clicking the arrow.
+  const attractionInfo = {"Rafting-Strecke": {"tag": "Rafting", "text": "Die Raftingreifen sind ausschließlich für Kinder bis maximal 45 kg vorgesehen.", "note": "Bitte die Hinweise vor Ort beachten."}, "Air Bubble": {"tag": "Air Bubble", "text": "Der große Air Bubble lädt zum Springen, Hüpfen und Austoben ein.", "note": "Maximales Körpergewicht: 90 kg."}, "Air Bubble Junior": {"tag": "Air Bubble Junior", "text": "Die kleinere Variante des Air Bubble ist speziell für jüngere Kinder gedacht.", "note": "Ideal für kleine Gäste, die spielerisch springen möchten."}, "Beachvolleyball": {"tag": "Beachvolleyball", "text": "Für eine aktive Pause an Land: gemeinsam spielen, bewegen und den Sommertag genießen.", "note": "Direkt im Freizeitpark."}, "Floß": {"tag": "Floß", "text": "Mit dem Floß geht es entspannt über den See – ein kleines Erlebnis für zwischendurch.", "note": "Bitte Rücksicht auf andere Badegäste nehmen."}, "Mini-Seilbahn": {"tag": "Mini-Seilbahn", "text": "Eine kleine Fahrt mit Aussicht über den Park – besonders beliebt bei Kindern.", "note": "Benutzung nach den Hinweisen vor Ort."}};
+  const attractionModal = document.getElementById('attraction-modal');
+  const attractionModalClose = attractionModal ? attractionModal.querySelector('.attraction-modal-close') : null;
+  const attractionModalTag = document.getElementById('attraction-modal-tag');
+  const attractionModalTitle = document.getElementById('attraction-modal-title');
+  const attractionModalText = document.getElementById('attraction-modal-text');
+  const attractionModalNote = document.getElementById('attraction-modal-note');
+
+  document.querySelectorAll('.attraction-info-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const key = btn.dataset.attraction;
+      const item = attractionInfo[key];
+      if(!item || !attractionModal) return;
+      attractionModalTag.textContent = item.tag;
+      attractionModalTitle.textContent = key;
+      attractionModalText.textContent = item.text;
+      attractionModalNote.textContent = item.note;
+      attractionModal.classList.add('is-open');
+      attractionModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    });
+  });
+
+  function closeAttractionModal(){
+    if(!attractionModal) return;
+    attractionModal.classList.remove('is-open');
+    attractionModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  if(attractionModalClose) attractionModalClose.addEventListener('click', closeAttractionModal);
+  if(attractionModal) attractionModal.addEventListener('click', (e) => {
+    if(e.target === attractionModal) closeAttractionModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeAttractionModal();
+  });
+
+</script>
+
+</body>
+</html>
