@@ -1409,11 +1409,422 @@
     margin-top:4px;
   }
 
+
+  /* ============================================================
+     MOBILE STABILITY / PERFORMANCE FIX
+     Prevents the second sticky frame from covering Attraktionen
+     and reduces expensive mobile blur effects.
+     ============================================================ */
+  @media (max-width: 760px) {
+    html, body {
+      overflow-x: hidden;
+    }
+
+    /* On mobile the Hero transition becomes a clean normal flow.
+       This prevents the sticky second frame from remaining above
+       the attraction cards further down the page. */
+    .hero-scroll-container {
+      height: auto !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      background: transparent !important;
+    }
+
+    .hero-scroll-container > .hero {
+      position: relative !important;
+      top: auto !important;
+      height: 100svh !important;
+      min-height: 620px !important;
+      z-index: 1 !important;
+    }
+
+    .hero-scroll-container > .features {
+      position: relative !important;
+      top: auto !important;
+      min-height: 0 !important;
+      transform: none !important;
+      z-index: 2 !important;
+      border-radius: 24px 24px 0 0;
+      padding-top: 72px !important;
+      padding-bottom: 72px !important;
+      box-shadow: 0 -18px 45px rgba(0,0,0,.20) !important;
+      overflow: visible !important;
+    }
+
+    /* Keep Hero content stable on touch devices */
+    .hero-scroll-container .hero-content {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    .hero-scroll-container .hero > img {
+      transform: none !important;
+      filter: saturate(1.05) brightness(.76) !important;
+    }
+
+    /* Attraction section must always sit above any preceding frame */
+    .activities {
+      position: relative !important;
+      z-index: 3 !important;
+      overflow: visible !important;
+    }
+
+    .activity-grid {
+      grid-template-columns: 1fr !important;
+      gap: 18px !important;
+    }
+
+    .activity-card {
+      aspect-ratio: 3 / 4 !important;
+      min-height: 0 !important;
+      isolation: isolate;
+    }
+
+    .activity-label {
+      left: 12px !important;
+      right: 12px !important;
+      bottom: 12px !important;
+      padding: 14px 15px !important;
+    }
+
+    /* Reduce heavy effects that cause Safari/iPhone stutter */
+    body::before {
+      filter: blur(14px) saturate(.86) brightness(.62) !important;
+      transform: scale(1.08) !important;
+    }
+
+    .features,
+    .activities,
+    .split,
+    .restaurant,
+    .pricing,
+    .reviews {
+      backdrop-filter: blur(8px) saturate(112%) !important;
+      -webkit-backdrop-filter: blur(8px) saturate(112%) !important;
+    }
+
+    .glass,
+    .feature-card,
+    .price-card,
+    .rest-card,
+    .activity-label,
+    .review-card {
+      backdrop-filter: blur(10px) saturate(112%) !important;
+      -webkit-backdrop-filter: blur(10px) saturate(112%) !important;
+    }
+
+    /* More comfortable mobile spacing */
+    section {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .section-head {
+      margin-bottom: 38px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 11vw, 58px) !important;
+    }
+
+    .hero p {
+      font-size: 15px !important;
+    }
+
+    .hero-actions {
+      gap: 10px !important;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .site-frame {
+      margin: 6px !important;
+      border-radius: 18px !important;
+    }
+
+    .nav-outer {
+      top: 14px !important;
+      padding: 0 12px;
+    }
+
+    .nav-pill {
+      width: 100%;
+      max-width: 390px;
+      justify-content: space-between;
+      padding: 11px 14px !important;
+    }
+
+    .nav-pill .brand {
+      font-size: 13px !important;
+    }
+
+    .nav-cta {
+      font-size: 12px !important;
+      padding: 8px 13px !important;
+    }
+
+    .hero-content {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+      gap: 16px !important;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px !important;
+      letter-spacing: .16em !important;
+    }
+
+    .hero-eyebrow .line {
+      width: 18px !important;
+    }
+
+    .wrap {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    .feature-card,
+    .price-card,
+    .review-card {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+
+    .activity-card {
+      aspect-ratio: 4 / 5 !important;
+    }
+  }
+
+
+  /* ============================================================
+     CURATOR FIXES — width, Anlageplan, spacing consistency
+     ============================================================ */
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip !important;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .site-frame,
+  .hero-scroll-container,
+  section,
+  .wrap,
+  .activity-grid,
+  .feature-grid,
+  .price-grid,
+  .reviews-grid,
+  .rest-card,
+  .anlageplan-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  body::before,
+  body::after {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    transform: none !important;
+  }
+
+  .activities,
+  .anlageplan,
+  #family,
+  .restaurant,
+  .pricing,
+  .reviews {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+  }
+
+  .activities .section-head,
+  .anlageplan .section-head,
+  .pricing .section-head,
+  .reviews .section-head {
+    margin-bottom: 48px !important;
+  }
+
+  .anlageplan {
+    width: 100%;
+    overflow: hidden !important;
+    background: rgba(8,23,17,.44) !important;
+  }
+
+  .anlageplan .wrap {
+    width: 100%;
+  }
+
+  .anlageplan-card {
+    width: 100%;
+    overflow: hidden !important;
+    isolation: isolate;
+    contain: paint;
+    border-radius: 24px;
+  }
+
+  .anlageplan-media {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+    overflow: hidden !important;
+  }
+
+  .anlageplan-media img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: none !important;
+  }
+
+  .anlageplan-media::after {
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  @media (max-width: 760px) {
+    html, body {
+      overflow-x: hidden !important;
+    }
+
+    .site-frame {
+      width: calc(100% - 12px) !important;
+      max-width: calc(100% - 12px) !important;
+      margin-left: 6px !important;
+      margin-right: 6px !important;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 100%;
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    .activities,
+    .anlageplan,
+    #family,
+    .restaurant,
+    .pricing,
+    .reviews {
+      padding-top: 68px !important;
+      padding-bottom: 68px !important;
+    }
+
+    .activities .section-head,
+    .anlageplan .section-head,
+    .pricing .section-head,
+    .reviews .section-head {
+      margin-bottom: 34px !important;
+    }
+
+    .anlageplan-card {
+      border-radius: 20px;
+    }
+
+    .anlageplan-media {
+      aspect-ratio: 4 / 3 !important;
+      min-height: 0 !important;
+    }
+
+    .activity-card,
+    .feature-card,
+    .price-card,
+    .review-card,
+    .rest-card,
+    .split-media {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .activities,
+    .anlageplan,
+    #family,
+    .restaurant,
+    .pricing,
+    .reviews {
+      padding-top: 60px !important;
+      padding-bottom: 60px !important;
+    }
+
+    .anlageplan-media {
+      aspect-ratio: 1 / 1 !important;
+    }
+  }
+
+
+
+@media (max-width:760px){
+html,body{width:100%;max-width:100%;overflow-x:hidden!important;-webkit-text-size-adjust:100%}
+.site-frame{width:calc(100% - 8px)!important;max-width:calc(100% - 8px)!important;margin:4px!important;border-radius:18px!important;overflow:hidden!important}
+.nav-outer{top:10px!important;left:8px!important;right:8px!important;width:auto!important}
+.nav-pill{width:100%;max-width:430px;justify-content:space-between;gap:10px!important;padding:10px 12px!important;border-radius:18px!important}
+.nav-pill .brand{font-size:12.5px!important;border:0!important;margin:0!important;padding:0!important;max-width:48vw;overflow:hidden;text-overflow:ellipsis}
+.nav-links{display:none!important}.nav-cta{padding:8px 12px!important;font-size:11.5px!important}
+.hero-scroll-container{height:auto!important;min-height:0!important;overflow:visible!important}
+.hero-scroll-container .hero{position:relative!important;top:auto!important;height:92svh!important;min-height:610px!important;max-height:860px!important;z-index:1!important}
+.hero img,.hero video{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important}
+.hero-content{width:100%!important;max-width:100%!important;padding:0 20px 34px!important;gap:14px!important;align-items:flex-start!important;text-align:left!important;transform:none!important;opacity:1!important}
+.hero h1{font-size:clamp(39px,12vw,58px)!important;line-height:.98!important;max-width:92%}.hero p{font-size:14px!important;line-height:1.55!important;max-width:92%!important}
+.hero-eyebrow{font-size:10px!important;letter-spacing:.16em!important}.hero-eyebrow .line{width:22px!important}
+.hero-actions{width:100%;justify-content:flex-start!important;gap:8px!important}.hero-actions .btn-primary,.hero-actions .btn-ghost{padding:12px 16px!important;font-size:12px!important}
+.hero-corner,.hero-rail,.hero-nav-arrows,.status-chip{display:none!important}
+.hero-scroll-container>.features{position:relative!important;top:auto!important;transform:none!important;min-height:0!important;z-index:2!important;border-radius:22px 22px 0 0!important;margin-top:-18px!important;padding-top:58px!important;padding-bottom:58px!important;overflow:visible!important}
+section:not(.hero){padding-top:62px!important;padding-bottom:62px!important}
+.wrap{width:100%!important;max-width:100%!important;padding-left:16px!important;padding-right:16px!important}
+.section-head{max-width:100%!important;margin-bottom:30px!important}.section-head h2,.split-text h2,.rest-body h2{font-size:clamp(28px,8vw,38px)!important;line-height:1.08!important}
+.feature-grid,.activity-grid,.price-grid,.reviews-grid{grid-template-columns:1fr!important;gap:14px!important}
+.activities{position:relative!important;z-index:4!important;overflow:hidden!important}
+.activity-card{width:100%!important;max-width:100%!important;aspect-ratio:4/5!important;border-radius:20px!important;overflow:hidden!important}
+.activity-label{left:10px!important;right:10px!important;bottom:10px!important;padding:13px 14px!important;border-radius:16px!important}
+.anlageplan,.anlageplan-card,.anlageplan-media{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important}
+.anlageplan-card{border-radius:20px!important}.anlageplan-media{position:relative!important;aspect-ratio:4/3!important;min-height:0!important}
+.anlageplan-media img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important}
+.rest-card,.split{grid-template-columns:1fr!important;gap:0!important;width:100%!important;border-radius:20px!important;overflow:hidden!important}
+.rest-media,.split-media{width:100%!important;min-height:0!important;aspect-ratio:4/3!important;border-radius:0!important}
+.rest-body,.split-text{padding:26px 20px!important}.check-list{gap:10px!important;margin-bottom:22px!important}.check-list li{font-size:13px!important}
+.price-card,.review-card,.feature-card{padding:22px 20px!important;border-radius:18px!important;min-height:0!important}
+.reviews-head{flex-direction:column!important;align-items:stretch!important;gap:20px!important;margin-bottom:28px!important}.reviews-score{width:100%!important;min-width:0!important;text-align:left!important}
+footer{padding:54px 0 24px!important}.footer-top{grid-template-columns:1fr!important;gap:28px!important;padding-bottom:34px!important}.footer-bottom{flex-direction:column!important;align-items:flex-start!important}
+.price-modal,.menu-modal{padding:12px!important;align-items:flex-end!important}.price-modal-panel,.menu-modal-panel,.family-pass-modal-panel,.attraction-modal-panel{width:100%!important;max-width:100%!important;max-height:88svh!important;overflow-y:auto!important;border-radius:22px 22px 10px 10px!important;padding:22px 16px!important}
+.beacheria-menu-wrap,.family-pass-modal-content{grid-template-columns:1fr!important}.beacheria-menu-page{width:100%!important;min-height:0!important;padding:22px 16px!important;border-radius:16px!important}
+body::before{filter:blur(11px) saturate(.82) brightness(.62)!important}
+.glass,.features,.activities,.split,.restaurant,.pricing,.reviews,.review-card,.feature-card,.price-card,.activity-label{backdrop-filter:blur(7px) saturate(108%)!important;-webkit-backdrop-filter:blur(7px) saturate(108%)!important}
+}
+@media (max-width:390px){
+.hero-scroll-container .hero{min-height:570px!important;height:88svh!important}
+.hero h1{font-size:clamp(36px,11.5vw,48px)!important}
+.hero-actions{flex-direction:column!important;align-items:stretch!important}
+.hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;text-align:center}
+.activity-card{aspect-ratio:1/1.16!important}.anlageplan-media{aspect-ratio:1/1!important}
+}
+
 </style>
+
 
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="favicon.png">
+
 </head>
 <body>
 
@@ -1944,6 +2355,20 @@
   function update(){
     ticking = false;
     if (!hero || !features) return;
+
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      heroContent && (heroContent.style.transform = '');
+      heroContent && (heroContent.style.opacity = '');
+      [heroCorner, heroRail, heroArrows, statusChip].forEach(el => {
+        if (el) el.style.opacity = '';
+      });
+      if (heroImage) {
+        heroImage.style.transform = '';
+        heroImage.style.filter = '';
+      }
+      features.style.transform = '';
+      return;
+    }
 
     const rect = scrollContainer.getBoundingClientRect();
     const track = scrollContainer.offsetHeight - window.innerHeight;
